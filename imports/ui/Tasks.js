@@ -7,3 +7,8 @@ export default Tasks = ({items}) => (
         {items.map(item => <Task key={item._id} item={item}/>)}
     </div>
 );
+
+Tasks.propTypes = {
+  items: PropTypes.array.isRequired,
+  item: PropTypes.object.isRequired,
+};
