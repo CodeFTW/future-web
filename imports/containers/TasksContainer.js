@@ -1,13 +1,16 @@
-import React from 'react';
+import { Meteor } from 'meteor/meteor';
 
+import { createContainer } from 'meteor/react-meteor-data';
+
+import TasksCollection from '/imports/collections/Tasks';
 import Tasks from '/imports/ui/Tasks';
 
-export default TasksContainer = () => {
-    const items = [
-        {_id: '07dh9021h39128hd', description: 'Task 1',},
-        {_id: 'jdlsijadas78437j', description: 'Task 2',},
-        {_id: 'jdp93upn308nddsa', description: 'Task 3',},
-        {_id: '903u2nra0dasds8s', description: 'Task 4',},
-    ];
-    return <Tasks items={items}/>;
-}
+export default TasksContainer = createContainer(({ id }) => {
+    const tasksHandle = Meteor.subscribe('allTasks', id);
+    const loading = !tasksHandle.ready()
+    const tasks = TasksCollection.find();
+    return {
+        loading,
+        items: tasks ? tasks.fetch() : [],
+    };
+}, Tasks);
