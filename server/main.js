@@ -1,6 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 
-import '/imports/api/publications/allTasks';
+import { createApolloServer } from 'meteor/apollo';
+import { makeExecutableSchema } from 'graphql-tools';
+import { typeDefs } from '/imports/api/schema';
+import { resolvers } from '/imports/api/resolvers';
+
 import TasksCollection from '/imports/collections/Tasks';
 
 Meteor.startup(() => {
@@ -9,4 +13,13 @@ Meteor.startup(() => {
     TasksCollection.insert({description: 'Task 2'});
     TasksCollection.insert({description: 'Task 3'});
     TasksCollection.insert({description: 'Task 4'});
+});
+
+const schema = makeExecutableSchema({
+    typeDefs,
+    resolvers,
+});
+
+createApolloServer({
+    schema,
 });
