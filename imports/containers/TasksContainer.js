@@ -7,7 +7,8 @@ import Tasks from '/imports/ui/Tasks';
 export default TasksContainer = graphql(gql`
   query Tasks {
     tasks {
-       description
+        _id
+        description
     }
   }
 `)(Tasks);
