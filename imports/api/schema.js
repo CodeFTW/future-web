@@ -7,5 +7,6 @@ type Query {
 type Task {
     _id: String!
     description: String!
+    details: String
 }
 `;

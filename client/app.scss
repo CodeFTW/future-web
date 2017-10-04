@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+html,
+body {
+  height: 100%;
+  @include flex-column;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  -webkit-text-size-adjust: 100%; //fix iOS first loading with bigger fonts
+}
+
+.text-center {
+  text-align: center;
+}

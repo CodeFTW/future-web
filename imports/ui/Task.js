@@ -1,3 +1,10 @@
 import React from 'react';
 
-export default Task = ({item}) => <div>{item.description}</div>;
+import Checkbox from 'material-ui/Checkbox';
+import {ListItem} from 'material-ui/List';
+
+export default Task = ({item}) => <ListItem
+          leftCheckbox={<Checkbox />}
+          primaryText={item.description}
+          secondaryText={item.details}
+        />;

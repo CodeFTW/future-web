@@ -9,6 +9,7 @@ export default TasksContainer = graphql(gql`
     tasks {
         _id
         description
+        details
     }
   }
 `)(Tasks);
