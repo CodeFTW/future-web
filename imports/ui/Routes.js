@@ -6,11 +6,9 @@ import TasksContainer from '/imports/containers/TasksContainer';
 
 export default Routes = () => {
     return (
-        <div>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/task" render={() => <TasksContainer/>}/>
-            </Switch>
-        </div>
+        <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/task" render={() => <TasksContainer/>}/>
+        </Switch>
     );
 }

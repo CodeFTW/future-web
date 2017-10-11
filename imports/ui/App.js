@@ -22,11 +22,11 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
-                <AppBar title="Meteor React Latest" onLeftIconButtonTouchTap={this.toggleMenu} />
-                <Menu open={this.state.open} onSelectMenu={this.closeMenu} />
-                <Routes/>
-            </div>
+            [
+                <AppBar title="Meteor React Latest" onLeftIconButtonTouchTap={this.toggleMenu} />,
+                <Menu open={this.state.open} onSelectMenu={this.closeMenu} />,
+                <Routes />
+            ]
         );
     }
 }
