@@ -1,15 +1,32 @@
 import React from 'react';
-
 import AppBar from 'material-ui/AppBar';
+import Menu from './Menu';
+import Routes from './Routes';
 
-import TasksContainer from '/imports/containers/TasksContainer';
+export default class App extends React.Component {
 
-export default App => (
-    <div>
+    constructor(props) {
+        super(props);
+        this.state = { open: false };
+    }
 
-    <AppBar title="Meteor React Latest" />
-        <div>
-            <TasksContainer/>
-        </div>
-    </div>
-);
+    toggleMenu = () => {
+        event.preventDefault();
+        this.setState({ open: !this.state.open });
+    };
+
+    closeMenu = () => {
+        event.preventDefault();
+        this.setState({ open: false });
+    };
+
+    render() {
+        return (
+            <div>
+                <AppBar title="Meteor React Latest" onLeftIconButtonTouchTap={this.toggleMenu} />
+                <Menu open={this.state.open} onSelectMenu={this.closeMenu} />
+                <Routes/>
+            </div>
+        );
+    }
+}

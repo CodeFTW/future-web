@@ -8,6 +8,7 @@ import { meteorClientConfig } from "meteor/apollo";
 import lightBaseTheme from "material-ui/styles/baseThemes/lightBaseTheme";
 import getMuiTheme from "material-ui/styles/getMuiTheme";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { BrowserRouter } from 'react-router-dom';
 
 import App from "/imports/ui/App";
 
@@ -17,7 +18,9 @@ Meteor.startup(() => {
   render(
     <ApolloProvider client={client}>
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
-        <App />
+        <BrowserRouter>
+          <App/>
+        </BrowserRouter>
       </MuiThemeProvider>
     </ApolloProvider>,
     document.getElementById("app")
