@@ -38,7 +38,7 @@ export default class App extends React.Component {
                     </Toolbar>
                 </AppBar>,
                 <Menu key="menu" open={this.state.open} onSelectMenu={this.closeMenu} />,
-                <main key="routes" style={{marginTop:60}}><Routes/></main>
+                <div key="routes" style={{marginTop:60}}><Routes/></div>,
             ]
         );
     }
