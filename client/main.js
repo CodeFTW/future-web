@@ -4,20 +4,18 @@ import { render } from "react-dom";
 import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
 import { meteorClientConfig } from "meteor/apollo";
-
-import lightBaseTheme from "material-ui/styles/baseThemes/lightBaseTheme";
-import getMuiTheme from "material-ui/styles/getMuiTheme";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { BrowserRouter } from 'react-router-dom';
-
 import App from "/imports/ui/App";
 
 const client = new ApolloClient(meteorClientConfig());
 
+const theme = createMuiTheme();
+
 Meteor.startup(() => {
   render(
     <ApolloProvider client={client}>
-      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+      <MuiThemeProvider theme={theme}>
         <BrowserRouter>
           <App/>
         </BrowserRouter>
