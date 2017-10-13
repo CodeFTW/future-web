@@ -6,6 +6,7 @@ import MenuIcon from 'material-ui-icons/Menu';
 import Typography from 'material-ui/Typography';
 import Menu from './Menu';
 import Routes from './Routes';
+import NavigationBar from './NavigationBar';
 
 export default class App extends React.Component {
 
@@ -39,6 +40,7 @@ export default class App extends React.Component {
                 </AppBar>,
                 <Menu key="menu" open={this.state.open} onSelectMenu={this.closeMenu} />,
                 <div key="routes" style={{marginTop:60}}><Routes/></div>,
+                <NavigationBar key="navBar"/>
             ]
         );
     }
