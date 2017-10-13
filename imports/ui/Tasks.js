@@ -1,8 +1,6 @@
 import React from 'react';
-
 import Task from './Task';
-
-import {List} from 'material-ui/List';
+import List from 'material-ui/List';
 
 export default Tasks = ({data:{loading, tasks}}) => {
     if(loading) {
