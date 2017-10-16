@@ -1,10 +1,4 @@
 import { Meteor } from "meteor/meteor";
-
-import { createApolloServer } from "meteor/apollo";
-import { makeExecutableSchema } from "graphql-tools";
-import { typeDefs } from "/imports/api/schema";
-import { resolvers } from "/imports/api/resolvers";
-
 import TasksCollection from "/imports/collections/Tasks";
 
 Meteor.startup(() => {
@@ -25,13 +19,4 @@ Meteor.startup(() => {
     description: "Implement in JS",
     details: "Try to have the fastest website ever"
   });
-});
-
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers
-});
-
-createApolloServer({
-  schema
 });
