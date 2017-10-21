@@ -1,0 +1,40 @@
+{
+    "name": "Meteor React Latest",
+    "short_name": "React Latest",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "Template project using Meteor, React, Apollo, Material UI.",
+    "icons": [
+        {
+            "src": "img/codeFTW.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "img/codeFTW.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "img/codeFTW.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "img/codeFTW.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "img/codeFTW.png",
+            "sizes": "168x168",
+            "type": "image/png"
+        },
+        {
+            "src": "img/codeFTW.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
