@@ -1,20 +1,10 @@
-import { createApolloServer } from 'meteor/apollo';
 import { makeExecutableSchema } from 'graphql-tools';
-import cors from 'cors';
 import { typeDefs } from "/imports/api/schema";
 import { resolvers } from "/imports/api/resolvers";
+import { setup } from 'meteor/swydo:ddp-apollo';
 
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers
-});
+const schema = makeExecutableSchema({ typeDefs, resolvers });
 
-const customOptions = {
+setup({
   schema,
-};
-
-const customConfig = {
-  configServer: graphQLServer => graphQLServer.use(cors()),
-};
-
-createApolloServer(customOptions, customConfig);
+});

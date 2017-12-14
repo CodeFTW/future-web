@@ -1,16 +1,20 @@
 import { Meteor } from "meteor/meteor";
 import React from "react";
 import { render } from "react-dom";
-import ApolloClient from "apollo-client";
 import { ApolloProvider } from "react-apollo";
-import { meteorClientConfig } from "meteor/apollo";
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { BrowserRouter } from 'react-router-dom';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { DDPLink } from 'meteor/swydo:ddp-apollo';
 import App from "/imports/ui/App";
 
-const client = new ApolloClient(meteorClientConfig());
-
 const theme = createMuiTheme();
+
+const client = new ApolloClient({
+  link: new DDPLink(),
+  cache: new InMemoryCache(),
+});
 
 Meteor.startup(() => {
   render(
