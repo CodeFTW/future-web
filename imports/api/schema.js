@@ -4,9 +4,20 @@ type Query {
   tasks: [Task]
 }
 
+input AddTaskInput {
+  description: String!
+  details: String
+}
+
+type Mutation {
+  addTask(task: AddTaskInput!): Task
+  doneTask(_id: ID!): Task
+}
+
 type Task {
-    _id: String!
-    description: String!
-    details: String
+  _id: ID!
+  description: String!
+  details: String
+  done: Boolean
 }
 `;

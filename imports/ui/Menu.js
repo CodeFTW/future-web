@@ -18,7 +18,7 @@ export default class Menu extends React.Component {
                             <ListItemText primary="Home"/>
                         </ListItem>
                     </Link>
-                    <Link to='/task' style={{ textDecoration: 'none' }}>
+                    <Link to='/tasks' style={{ textDecoration: 'none' }}>
                         <ListItem button onClick={this.props.onSelectMenu}>
                             <ListItemIcon>
                                 <ListIcon/>
