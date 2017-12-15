@@ -20,3 +20,24 @@ body {
 .text-center {
   text-align: center;
 }
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 5px 5px 0 5px;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-action {
+  margin: 5px;
+}

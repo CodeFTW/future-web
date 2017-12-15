@@ -1,9 +1,10 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import BottomNavigation, { BottomNavigationButton } from 'material-ui/BottomNavigation';
-import SettingsIcon from 'material-ui-icons/Settings';
-import ShoppingCartIcon from 'material-ui-icons/ShoppingCart';
+import { Add, ViewList } from 'material-ui-icons';
+import { Paper } from 'material-ui';
 import { browserHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const styles = {
   root: {
@@ -25,14 +26,27 @@ class NavigationBar extends React.Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
+    const { router: { history } } = this.context;
 
     return (
-      <BottomNavigation value={value} onChange={this.handleChange} showLabels className={classes.root}>
-          <BottomNavigationButton label="Shopping cart" icon={<ShoppingCartIcon />} />
-          <BottomNavigationButton label="Settings" icon={<SettingsIcon />}/>
-      </BottomNavigation>
+      <Paper elevation={10}>
+        <BottomNavigation value={value} onChange={this.handleChange} showLabels className={classes.root}>
+          <BottomNavigationButton label="Tasks" icon={<ViewList/>} onClick={() => history.push({
+            pathname: '/tasks',
+          })}/>
+          <BottomNavigationButton label="Add" icon={<Add/>} onClick={() => history.push({
+            pathname: '/add',
+          })}/>
+        </BottomNavigation>
+      </Paper>
     );
   }
 }
+
+NavigationBar.contextTypes = {
+  router: PropTypes.shape({
+    history: PropTypes.object.isRequired,
+  }),
+};
 
 export default withStyles(styles)(NavigationBar);
