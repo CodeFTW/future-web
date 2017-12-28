@@ -8,11 +8,13 @@ export const resolvers = {
   },
   Mutation: {
     async addTask(root, { task }) {
-      return TasksCollection.findOne(TasksCollection.insert({ ...task, done: false }));
+      return TasksCollection.findOne(
+        TasksCollection.insert({ ...task, done: false })
+      );
     },
     async doneTask(root, { _id }) {
       TasksCollection.update({ _id }, { $set: { done: true } });
       return TasksCollection.findOne(_id);
-    }
-  }
+    },
+  },
 };

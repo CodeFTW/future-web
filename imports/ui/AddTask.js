@@ -9,22 +9,28 @@ export default class AddTask extends React.Component {
     details: '',
   };
 
-  onInputChange = ({ target: { name, value } }) => this.setState({ [name]: value });
+  onInputChange = ({ target: { name, value } }) =>
+    this.setState({ [name]: value });
 
   addTaskAndGo = () => {
     const { router: { history } } = this.context;
     const { addTask } = this.props;
-    addTask({ variables: { task: { description: this.state.description, details: this.state.details } } })
-      .then(({ data: { addTask: { _id } } }) => {
-        console.log({_id});
-        if (_id) {
-          history.push('/tasks');
-        }
-      });
+    addTask({
+      variables: {
+        task: {
+          description: this.state.description,
+          details: this.state.details,
+        },
+      },
+    }).then(({ data: { addTask: { _id } } }) => {
+      console.log({ _id });
+      if (_id) {
+        history.push('/tasks');
+      }
+    });
   };
 
   render() {
-
     return (
       <form className="form">
         <TextField
@@ -41,13 +47,18 @@ export default class AddTask extends React.Component {
           onChange={this.onInputChange}
           fullWidth
         />
-        <Button className="form-action" raised color="primary" onClick={this.addTaskAndGo}>
-          <Add/> Task
+        <Button
+          className="form-action"
+          raised
+          color="primary"
+          onClick={this.addTaskAndGo}
+        >
+          <Add /> Task
         </Button>
       </form>
     );
   }
-};
+}
 
 AddTask.contextTypes = {
   router: PropTypes.shape({

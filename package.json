@@ -3,7 +3,10 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "start": "meteor run"
+    "start": "meteor run",
+    "lint": "eslint . --fix || true",
+    "pret": "prettier --single-quote --trailing-comma es5 --write \"{client,imports,server}/**/*.js\" || true",
+    "style": "npm run pret && npm run lint"
   },
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.2",
@@ -16,7 +19,7 @@
     "graphql-server-express": "^1.3.0",
     "graphql-tag": "^2.6.0",
     "graphql-tools": "^2.13.0",
-    "material-ui": "^1.0.0-beta.23",
+    "material-ui": "^1.0.0-beta.25",
     "material-ui-icons": "^1.0.0-beta.17",
     "meteor-node-stubs": "~0.3.2",
     "prop-types": "^15.6.0",
@@ -24,5 +27,14 @@
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "eslint-config-tecsinapse-js": "^1.0.5",
+    "prettier-eslint": "^8.7.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "tecsinapse-js"
+    ]
   }
 }

@@ -1,13 +1,11 @@
-import {graphql} from 'react-apollo';
+import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import AddTask from '/imports/ui/AddTask';
 
 export const addTaskMutation = graphql(
   gql`
-    mutation addTask(
-      $task: AddTaskInput!
-    ) {
+    mutation addTask($task: AddTaskInput!) {
       addTask(task: $task) {
         _id
         description
@@ -23,4 +21,4 @@ export const addTaskMutation = graphql(
   }
 );
 
-export default AddTaskContainer = addTaskMutation(AddTask);
+export default (AddTaskContainer = addTaskMutation(AddTask));
