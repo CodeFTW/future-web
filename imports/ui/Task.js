@@ -1,10 +1,10 @@
 import React from 'react';
-import Checkbox from 'material-ui/Checkbox';
-import { ListItem, ListItemText } from 'material-ui/List';
+import { Checkbox } from 'material-ui';
+import { ListItem, ListItemText } from 'material-ui';
 
-export default (Task = ({ item }) => (
+export const Task = ({ item }) => (
   <ListItem>
     <Checkbox />
     <ListItemText primary={item.description} secondary={item.details} />
   </ListItem>
-));
+);

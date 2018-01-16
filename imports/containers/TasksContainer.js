@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import Tasks from '/imports/ui/Tasks';
+import { Tasks } from '/imports/ui/Tasks';
 
 // TODO be possible to mark task as done
 export const doneTaskMutation = graphql(

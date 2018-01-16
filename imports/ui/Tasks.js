@@ -1,10 +1,20 @@
 import React from 'react';
-import Task from './Task';
-import List from 'material-ui/List';
+import { List } from 'material-ui';
+import { Task } from './Task';
 
-export default (Tasks = ({ data: { loading, tasks } }) => {
+export const Tasks = ({ data: { loading, tasks } }) => {
   if (loading) {
     return <div>loading...</div>;
   }
-  return <List>{tasks.map(item => <Task key={item._id} item={item} />)}</List>;
-});
+
+  if (tasks.length === 0) {
+    return <div>no tasks available</div>;
+  }
+
+  return (
+    <List>
+      {tasks
+        .map(item => <Task key={item._id} item={item} />)}
+    </List>
+  );
+};
