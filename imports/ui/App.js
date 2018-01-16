@@ -9,7 +9,6 @@ import Routes from './Routes';
 import NavigationBar from './NavigationBar';
 
 export default class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = { open: false };
@@ -30,16 +29,22 @@ export default class App extends React.Component {
       <div className="app">
         <AppBar>
           <Toolbar>
-            <IconButton color="contrast" aria-label="Menu" onClick={this.toggleMenu}>
-              <MenuIcon/>
+            <IconButton
+              color="contrast"
+              aria-label="Menu"
+              onClick={this.toggleMenu}
+            >
+              <MenuIcon />
             </IconButton>
             <Typography type="headline" color="inherit">
               Meteor React Latest
             </Typography>
           </Toolbar>
         </AppBar>
-        <Menu open={this.state.open} onSelectMenu={this.closeMenu}/>
-        <div className="content" style={{ marginTop: 60 }}><Routes/></div>
+        <Menu open={this.state.open} onSelectMenu={this.closeMenu} />
+        <div className="content" style={{ marginTop: 60 }}>
+          <Routes />
+        </div>
         <NavigationBar />
       </div>
     );
