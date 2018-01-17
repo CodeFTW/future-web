@@ -1,9 +1,8 @@
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { Tasks } from '/imports/ui/Tasks';
 
-// TODO be possible to mark task as done
 export const doneTaskMutation = graphql(
   gql`
     mutation doneTask($_id: ID!) {
@@ -22,7 +21,7 @@ export const doneTaskMutation = graphql(
   }
 );
 
-export default (TasksContainer = graphql(gql`
+const data = graphql(gql`
   query Tasks {
     tasks {
       _id
@@ -30,4 +29,6 @@ export default (TasksContainer = graphql(gql`
       details
     }
   }
-`)(Tasks));
+`);
+
+export const TasksContainer = data(Tasks);

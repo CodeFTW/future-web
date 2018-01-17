@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
-import TasksContainer from '/imports/containers/TasksContainer';
 import AddTaskContainer from '/imports/containers/AddTaskContainer';
+import { TasksContainer } from '../containers/TasksContainer';
 
 export default (Routes = () => (
   <Switch>
