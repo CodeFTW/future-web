@@ -27,8 +27,9 @@ const data = graphql(gql`
       _id
       description
       details
+      done
     }
   }
 `);
 
-export const TasksContainer = data(Tasks);
+export const TasksContainer = compose(data, doneTaskMutation)(Tasks);

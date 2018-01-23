@@ -15,9 +15,6 @@ export const addTaskMutation = graphql(
   `,
   {
     name: 'addTask',
-    options: {
-      refetchQueries: ['Tasks'],
-    },
   }
 );
 
