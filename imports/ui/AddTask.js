@@ -5,9 +5,22 @@ import PropTypes from 'prop-types';
 
 export default class AddTask extends React.Component {
   state = {
+    _id: null,
     description: '',
     details: '',
   };
+
+  componentWillReceiveProps(nextProps) {
+    const { data } = nextProps;
+    if (!data || data.loading) {
+      return;
+    }
+    this.setState({
+      _id: data.task._id || null,
+      description: data.task.description || '',
+      details: data.task.details || '',
+    });
+  }
 
   onInputChange = ({ target: { name, value } }) =>
     this.setState({ [name]: value });

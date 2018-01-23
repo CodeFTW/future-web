@@ -13,8 +13,9 @@ export const Tasks = ({ data: { loading, tasks }, flipTask }) => {
 
   return (
     <List>
-      {tasks
-        .map(item => <Task key={item._id} item={item} flipTask={flipTask} />)}
+      {tasks.map(item => (
+        <Task key={item._id} item={item} flipTask={flipTask} />
+      ))}
     </List>
   );
 };
