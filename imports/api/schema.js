@@ -11,7 +11,7 @@ input AddTaskInput {
 
 type Mutation {
   addTask(task: AddTaskInput!): Task
-  doneTask(_id: ID!): Task
+  flipTask(_id: ID!): Task
 }
 
 type Task {

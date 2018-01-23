@@ -2,7 +2,7 @@ import React from 'react';
 import { List } from 'material-ui';
 import { Task } from './Task';
 
-export const Tasks = ({ data: { loading, tasks }, doneTask }) => {
+export const Tasks = ({ data: { loading, tasks }, flipTask }) => {
   if (loading) {
     return <div>loading...</div>;
   }
@@ -14,7 +14,7 @@ export const Tasks = ({ data: { loading, tasks }, doneTask }) => {
   return (
     <List>
       {tasks
-        .map(item => <Task key={item._id} item={item} doneTask={doneTask} />)}
+        .map(item => <Task key={item._id} item={item} flipTask={flipTask} />)}
     </List>
   );
 };

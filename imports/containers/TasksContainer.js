@@ -5,8 +5,8 @@ import { Tasks } from '/imports/ui/Tasks';
 
 export const doneTaskMutation = graphql(
   gql`
-    mutation doneTask($_id: ID!) {
-      doneTask(_id: $_id) {
+    mutation flipTask($_id: ID!) {
+      flipTask(_id: $_id) {
         _id
         description
         details
@@ -14,7 +14,7 @@ export const doneTaskMutation = graphql(
     }
   `,
   {
-    name: 'doneTask',
+    name: 'flipTask',
     options: {
       refetchQueries: ['Tasks'],
     },

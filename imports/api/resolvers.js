@@ -12,8 +12,9 @@ export const resolvers = {
         TasksCollection.insert({ ...task, done: false })
       );
     },
-    async doneTask(root, { _id }) {
-      TasksCollection.update({ _id }, { $set: { done: true } });
+    async flipTask(root, { _id }) {
+      const task = TasksCollection.findOne(_id);
+      TasksCollection.update({ _id }, { $set: { done: !task.done } });
       return TasksCollection.findOne(_id);
     },
   },
