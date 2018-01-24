@@ -1,12 +1,7 @@
 {
   "plugins": [
-    [
-      "module-resolver",
-      {
-        "root": [
-          "./"
-        ]
-      }
-    ]
+    ["module-resolver", {
+      "root": ["./"]
+    }]
   ]
 }

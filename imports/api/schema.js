@@ -1,7 +1,7 @@
 export const typeDefs = `
 type Query {
-  say: String
   tasks: [Task]
+  task(_id: ID!): Task
 }
 
 input AddTaskInput {
@@ -11,7 +11,8 @@ input AddTaskInput {
 
 type Mutation {
   addTask(task: AddTaskInput!): Task
-  doneTask(_id: ID!): Task
+  flipTask(_id: ID!): Task
+  removeTask(_id: ID!): Task
 }
 
 type Task {

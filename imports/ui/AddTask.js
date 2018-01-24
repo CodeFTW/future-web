@@ -3,11 +3,24 @@ import { Button, TextField } from 'material-ui';
 import { Add } from 'material-ui-icons';
 import PropTypes from 'prop-types';
 
-export default class AddTask extends React.Component {
+export class AddTask extends React.Component {
   state = {
+    _id: null,
     description: '',
     details: '',
   };
+
+  componentWillReceiveProps(nextProps) {
+    const { data } = nextProps;
+    if (!data || data.loading) {
+      return;
+    }
+    this.setState({
+      _id: data.task._id || null,
+      description: data.task.description || '',
+      details: data.task.details || '',
+    });
+  }
 
   onInputChange = ({ target: { name, value } }) =>
     this.setState({ [name]: value });
@@ -23,9 +36,8 @@ export default class AddTask extends React.Component {
         },
       },
     }).then(({ data: { addTask: { _id } } }) => {
-      console.log({ _id });
       if (_id) {
-        history.push('/tasks');
+        history.push('/');
       }
     });
   };

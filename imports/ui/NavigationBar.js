@@ -16,7 +16,7 @@ const styles = {
   },
 };
 
-class NavigationBar extends React.Component {
+class NavigationBarComponent extends React.Component {
   state = {
     value: 0,
   };
@@ -42,7 +42,7 @@ class NavigationBar extends React.Component {
             label="Tasks"
             icon={<ViewList />}
             component={Link}
-            to="/tasks"
+            to="/"
           />
           <BottomNavigationAction
             label="Add"
@@ -56,12 +56,10 @@ class NavigationBar extends React.Component {
   }
 }
 
-NavigationBar.contextTypes = {
+NavigationBarComponent.contextTypes = {
   router: PropTypes.shape({
     history: PropTypes.object.isRequired,
   }),
 };
 
-export default withStyles(styles)(NavigationBar);
-
-//export default NavigationBar;
+export const NavigationBar = withStyles(styles)(NavigationBarComponent);

@@ -1,5 +1,7 @@
 import { Mongo } from 'meteor/mongo';
 
-const Tasks = new Mongo.Collection('tasks');
+class TasksCollection extends Mongo.Collection {}
 
-export default Tasks;
+const collection = new TasksCollection('tasks');
+
+export { collection as TasksCollection };
