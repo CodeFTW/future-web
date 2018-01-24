@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import Typography from 'material-ui/Typography';
-import Menu from './Menu';
-import Routes from './Routes';
-import NavigationBar from './NavigationBar';
+import { Menu } from './Menu';
+import { NavigationBar } from './NavigationBar';
+import { Routes } from './Routes';
 
-export default class App extends React.Component {
+export class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { open: false };

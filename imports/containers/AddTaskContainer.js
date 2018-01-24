@@ -1,8 +1,8 @@
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import AddTask from '/imports/ui/AddTask';
 import { compose } from 'recompose';
+import { AddTask } from '../ui/AddTask';
 
 export const addTaskMutation = graphql(
   gql`

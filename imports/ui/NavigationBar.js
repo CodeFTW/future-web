@@ -5,7 +5,6 @@ import BottomNavigation, {
 } from 'material-ui/BottomNavigation';
 import { Add, ViewList } from 'material-ui-icons';
 import { Paper } from 'material-ui';
-import { browserHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -16,7 +15,7 @@ const styles = {
   },
 };
 
-class NavigationBar extends React.Component {
+class NavigationBarComponent extends React.Component {
   state = {
     value: 0,
   };
@@ -41,20 +40,12 @@ class NavigationBar extends React.Component {
           <BottomNavigationButton
             label="Tasks"
             icon={<ViewList />}
-            onClick={() =>
-              history.push({
-                pathname: '/tasks',
-              })
-            }
+            onClick={() => history.push('/')}
           />
           <BottomNavigationButton
             label="Add"
             icon={<Add />}
-            onClick={() =>
-              history.push({
-                pathname: '/add',
-              })
-            }
+            onClick={() => history.push('/add')}
           />
         </BottomNavigation>
       </Paper>
@@ -62,10 +53,10 @@ class NavigationBar extends React.Component {
   }
 }
 
-NavigationBar.contextTypes = {
+NavigationBarComponent.contextTypes = {
   router: PropTypes.shape({
     history: PropTypes.object.isRequired,
   }),
 };
 
-export default withStyles(styles)(NavigationBar);
+export const NavigationBar = withStyles(styles)(NavigationBarComponent);
