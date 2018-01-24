@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 
 import { Tasks } from '/imports/ui/Tasks';
 
-export const doneTaskMutation = graphql(
+export const flipTaskMutation = graphql(
   gql`
     mutation flipTask($_id: ID!) {
       flipTask(_id: $_id) {
@@ -15,6 +15,21 @@ export const doneTaskMutation = graphql(
   `,
   {
     name: 'flipTask',
+    options: {
+      refetchQueries: ['Tasks'],
+    },
+  }
+);
+export const removeTaskMutation = graphql(
+  gql`
+    mutation removeTask($_id: ID!) {
+      removeTask(_id: $_id) {
+        _id
+      }
+    }
+  `,
+  {
+    name: 'removeTask',
     options: {
       refetchQueries: ['Tasks'],
     },
@@ -32,4 +47,8 @@ const data = graphql(gql`
   }
 `);
 
-export const TasksContainer = compose(data, doneTaskMutation)(Tasks);
+export const TasksContainer = compose(
+  data,
+  flipTaskMutation,
+  removeTaskMutation
+)(Tasks);

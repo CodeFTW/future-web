@@ -15,12 +15,17 @@ export const resolvers = {
         TasksCollection.update(task._id, { $set: { ...task } });
         return TasksCollection.findOne(task._id);
       }
-        return TasksCollection.findOne(TasksCollection.insert({ ...task }));
+      return TasksCollection.findOne(TasksCollection.insert({ ...task }));
     },
     async flipTask(root, { _id }) {
       const task = TasksCollection.findOne(_id);
       TasksCollection.update({ _id }, { $set: { done: !task.done } });
       return TasksCollection.findOne(_id);
+    },
+    async removeTask(root, { _id }) {
+      TasksCollection.remove(_id);
+      // TODO check how to return a boolean in GraphQL
+      return { _id };
     },
   },
 };
