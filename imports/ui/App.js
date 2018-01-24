@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Reboot from 'material-ui/Reboot';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
@@ -27,10 +28,11 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="app">
+        <Reboot />
         <AppBar>
           <Toolbar>
             <IconButton
-              color="contrast"
+
               aria-label="Menu"
               onClick={this.toggleMenu}
             >

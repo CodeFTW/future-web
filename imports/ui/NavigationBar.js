@@ -1,11 +1,11 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import BottomNavigation, {
-  BottomNavigationButton,
+  BottomNavigationAction,
 } from 'material-ui/BottomNavigation';
 import { Add, ViewList } from 'material-ui-icons';
 import { Paper } from 'material-ui';
-import { browserHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -38,23 +38,17 @@ class NavigationBar extends React.Component {
           showLabels
           className={classes.root}
         >
-          <BottomNavigationButton
+          <BottomNavigationAction
             label="Tasks"
             icon={<ViewList />}
-            onClick={() =>
-              history.push({
-                pathname: '/tasks',
-              })
-            }
+            component={Link}
+            to="/tasks"
           />
-          <BottomNavigationButton
+          <BottomNavigationAction
             label="Add"
             icon={<Add />}
-            onClick={() =>
-              history.push({
-                pathname: '/add',
-              })
-            }
+            component={Link}
+            to="/add"
           />
         </BottomNavigation>
       </Paper>
@@ -69,3 +63,5 @@ NavigationBar.contextTypes = {
 };
 
 export default withStyles(styles)(NavigationBar);
+
+//export default NavigationBar;
