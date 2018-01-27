@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 export class AddTask extends React.Component {
   state = {
-    _id: null,
     description: '',
     details: '',
   };
@@ -31,6 +30,7 @@ export class AddTask extends React.Component {
     addTask({
       variables: {
         task: {
+          _id: this.state._id,
           description: this.state.description,
           details: this.state.details,
         },

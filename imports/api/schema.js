@@ -5,6 +5,7 @@ type Query {
 }
 
 input AddTaskInput {
+  _id: ID
   description: String!
   details: String
 }
