@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "start": "meteor run",
+    "start": "meteor --settings private/env/dev/settings.json",
     "lint": "eslint . --fix || true",
     "pret": "prettier --single-quote --trailing-comma es5 --write \"{client,imports,server}/**/*.js\" || true",
     "style": "npm run pret && npm run lint"
