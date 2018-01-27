@@ -1,3 +1,4 @@
+/* eslint-disable */
 const HTMLToCache = '/';
 const version = 'MSW V0.3';
 
