@@ -1,10 +1,11 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import BottomNavigation, {
-  BottomNavigationButton,
+  BottomNavigationAction,
 } from 'material-ui/BottomNavigation';
 import { Add, ViewList } from 'material-ui-icons';
 import { Paper } from 'material-ui';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const styles = {
@@ -37,15 +38,17 @@ class NavigationBarComponent extends React.Component {
           showLabels
           className={classes.root}
         >
-          <BottomNavigationButton
+          <BottomNavigationAction
             label="Tasks"
             icon={<ViewList />}
-            onClick={() => history.push('/')}
+            component={Link}
+            to="/"
           />
-          <BottomNavigationButton
+          <BottomNavigationAction
             label="Add"
             icon={<Add />}
-            onClick={() => history.push('/add')}
+            component={Link}
+            to="/add"
           />
         </BottomNavigation>
       </Paper>

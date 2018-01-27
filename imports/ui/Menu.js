@@ -7,7 +7,7 @@ import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 export class Menu extends React.Component {
   render() {
     return (
-      <Drawer open={this.props.open} onRequestClose={this.props.onSelectMenu}>
+      <Drawer open={this.props.open} onClose={this.props.onSelectMenu}>
         <List>
           <Link to="/" style={{ textDecoration: 'none' }}>
             <ListItem button onClick={this.props.onSelectMenu}>
