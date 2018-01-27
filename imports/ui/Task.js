@@ -24,7 +24,7 @@ const handleRemove = (_id, removeTask) => () => {
 const enhance = compose(withRouter);
 export const Task = enhance(({ item, history, removeTask, flipTask }) => (
   <ListItem>
-    <Checkbox checked={item.done} onChange={handleChange(item._id, flipTask)} />
+    <Checkbox defaultChecked={item.done} onChange={handleChange(item._id, flipTask)} />
     <ListItemText
       primary={item.description}
       secondary={item.details}
