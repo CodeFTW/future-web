@@ -25,6 +25,8 @@ meteor npm start
 `
 meteor npm run style
 `
+## How to upgrade your fork to capture changes in the main project
+`Just follow the steps in this `[link](https://gist.github.com/rdeavila/9618969)
 
 # How to Contribute with Ideas
 Follow these steps:
