@@ -11,7 +11,6 @@ export const addTaskMutation = graphql(
         _id
         description
         details
-        
       }
     }
   `,
@@ -26,6 +25,7 @@ const taskQuery = gql`
       _id
       description
       details
+      doDate
     }
   }
 `;

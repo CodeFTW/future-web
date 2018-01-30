@@ -25,6 +25,7 @@ export class AddTask extends React.Component {
       _id: data.task._id || null,
       description: data.task.description || '',
       details: data.task.details || '',
+      doDate: data.task.doDate || new Date(),
     });
   }
 
