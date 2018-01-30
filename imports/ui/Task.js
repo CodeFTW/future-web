@@ -6,6 +6,7 @@ import { DeleteForever } from 'material-ui-icons';
 import { indigo } from 'material-ui/colors/index';
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 const handleChange = (_id, flipTask) => () => {
   flipTask({ variables: { _id } }).then(({ data: { flipTask: { _id } } }) => {
@@ -32,9 +33,10 @@ export const Task = enhance(({ item, history, removeTask, flipTask }) => (
     <ListItemText
       className={item.done ? 'task-done' : ''}
       primary={item.description}
-      secondary={item.details}
+      secondary={`${item.details} - ${moment(item.doDate).format("DD/MM/YYYY")}`}
       onClick={handleClick(item._id, history)}
     />
+
     <DeleteForever
       style={{ color: indigo[700] }}
       onClick={handleRemove(item._id, removeTask)}

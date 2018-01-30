@@ -1,4 +1,5 @@
 import { TasksCollection } from '../collections/Tasks';
+import { resolverDateTime } from '../utils/dates';
 
 export const resolvers = {
   Query: {
@@ -28,4 +29,5 @@ export const resolvers = {
       return { _id };
     },
   },
+  DateTime: resolverDateTime,
 };

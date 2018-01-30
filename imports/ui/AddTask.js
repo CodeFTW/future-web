@@ -2,11 +2,18 @@ import React from 'react';
 import { Button, TextField } from 'material-ui';
 import { Add } from 'material-ui-icons';
 import PropTypes from 'prop-types';
+import { DatePicker } from 'material-ui-pickers';
 
 export class AddTask extends React.Component {
   state = {
     description: '',
     details: '',
+    done: false,
+    doDate: new Date(),
+  };
+
+  handleDoDateChange = doDate => {
+    this.setState({ doDate })
   };
 
   componentWillReceiveProps(nextProps) {
@@ -30,9 +37,7 @@ export class AddTask extends React.Component {
     addTask({
       variables: {
         task: {
-          _id: this.state._id,
-          description: this.state.description,
-          details: this.state.details,
+          ...this.state
         },
       },
     }).then(({ data: { addTask: { _id } } }) => {
@@ -58,6 +63,12 @@ export class AddTask extends React.Component {
           value={this.state.details}
           onChange={this.onInputChange}
           fullWidth
+        />
+        <DatePicker
+          value={this.state.doDate}
+          returnMoment={false}
+          onChange={this.handleDoDateChange}
+          minDate={new Date()}
         />
         <Button
           className="form-action"

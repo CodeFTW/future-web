@@ -1,4 +1,6 @@
 export const typeDefs = `
+scalar DateTime
+
 type Query {
   tasks: [Task]
   task(_id: ID!): Task
@@ -8,6 +10,8 @@ input AddTaskInput {
   _id: ID
   description: String!
   details: String
+  done: Boolean
+  doDate: DateTime
 }
 
 type Mutation {
@@ -21,5 +25,6 @@ type Task {
   description: String!
   details: String
   done: Boolean
+  doDate: DateTime
 }
 `;

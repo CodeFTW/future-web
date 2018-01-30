@@ -11,6 +11,7 @@ export const addTaskMutation = graphql(
         _id
         description
         details
+        
       }
     }
   `,
