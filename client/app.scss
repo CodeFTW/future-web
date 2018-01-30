@@ -32,6 +32,32 @@ body {
   height: 100vh;
 }
 
+@mixin task-priority($color)  {
+  border-left-style: solid;
+  border-left-color: $color;
+  border-left-width: 5px;
+
+}
+.task-priority--1 {
+  @include task-priority(#D50000);
+}
+.task-priority-0 {
+  @include task-priority(#FFD600);
+}
+.task-priority-1 {
+  @include task-priority(#DD2C00);
+}
+.task-priority-2 {
+  @include task-priority(#455A64);
+}
+.task-priority-3 {
+  @include task-priority(#00C853);
+}
+.task-priority-4 {
+  @include task-priority(#33691E);
+}
+
+
 .form {
   display: flex;
   flex-direction: column;

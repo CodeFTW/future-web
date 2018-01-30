@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Checkbox } from 'material-ui';
+import { Checkbox, Paper } from 'material-ui';
 import { ListItem, ListItemText } from 'material-ui';
 import { DeleteForever } from 'material-ui-icons';
 import { indigo } from 'material-ui/colors/index';
@@ -14,6 +14,19 @@ const handleChange = (_id, flipTask) => () => {
   });
 };
 
+const handleDays = (date) => {
+  const days = moment(date).diff(moment(), 'days');
+  if(days > 4) {
+    return 4;
+  }
+  if(days < -1) {
+    return -1;
+  }
+
+  return days;
+};
+
+
 const handleClick = (_id, history) => () => {
   history.push(`/edit/${_id}`);
 };
@@ -24,24 +37,26 @@ const handleRemove = (_id, removeTask) => () => {
 
 const enhance = compose(withRouter);
 export const Task = enhance(({ item, history, removeTask, flipTask }) => (
-  <ListItem>
-    <Checkbox
-      defaultChecked={item.done}
-      checked={item.done}
-      onChange={handleChange(item._id, flipTask)}
-    />
-    <ListItemText
-      className={item.done ? 'task-done' : ''}
-      primary={item.description}
-      secondary={`${item.details} - ${moment(item.doDate).format("DD/MM/YYYY")}`}
-      onClick={handleClick(item._id, history)}
-    />
+  <Paper className={`task-priority-${handleDays(item.doDate)}` }>
+    <ListItem>
+      <Checkbox
+        defaultChecked={item.done}
+        checked={item.done}
+        onChange={handleChange(item._id, flipTask)}
+      />
+      <ListItemText
+        className={item.done ? 'task-done' : ''}
+        primary={item.description}
+        secondary={`${item.details} - ${moment(item.doDate).format('DD/MM/YYYY')}`}
+        onClick={handleClick(item._id, history)}
+      />
 
-    <DeleteForever
-      style={{ color: indigo[700] }}
-      onClick={handleRemove(item._id, removeTask)}
-    />
-  </ListItem>
+      <DeleteForever
+        style={{ color: indigo[700] }}
+        onClick={handleRemove(item._id, removeTask)}
+      />
+    </ListItem>
+  </Paper>
 ));
 
 Task.contextTypes = {
