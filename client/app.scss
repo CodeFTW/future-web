@@ -3,15 +3,15 @@
   margin: 0;
 }
 
-@mixin flex-column {
+@mixin flex($direction) {
   display: flex;
-  flex-direction: column;
+  flex-direction: $direction;
 }
 
 html,
 body {
   height: 100%;
-  @include flex-column;
+  @include flex(column);
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   -webkit-text-size-adjust: 100%; //fix iOS first loading with bigger fonts
@@ -67,6 +67,14 @@ body {
 .form-action {
   margin: 5px;
 }
+
 .task-done  {
   text-decoration: line-through;
+}
+
+.loading-indicator {
+  @include flex(column);
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }

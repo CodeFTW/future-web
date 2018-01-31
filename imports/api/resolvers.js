@@ -1,5 +1,6 @@
 import { TasksCollection } from '../collections/Tasks';
 import { resolverDateTime } from '../utils/dates';
+import { Users } from '../collections/UsersCollection';
 
 export const resolvers = {
   Query: {
@@ -8,6 +9,9 @@ export const resolvers = {
     },
     async task(root, { _id }) {
       return TasksCollection.findOne(_id);
+    },
+    async loggedUser(root, args, { userId }) {
+      return Users.findOne(userId);
     },
   },
   Mutation: {

@@ -4,6 +4,7 @@ scalar DateTime
 type Query {
   tasks: [Task]
   task(_id: ID!): Task
+  loggedUser: User
 }
 
 input AddTaskInput {
@@ -26,5 +27,11 @@ type Task {
   details: String
   done: Boolean
   doDate: DateTime
+}
+
+type User {
+  _id: ID!
+  email: String!
+  name: String
 }
 `;

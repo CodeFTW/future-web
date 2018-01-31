@@ -7,7 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { DDPLink } from 'meteor/swydo:ddp-apollo';
-import { App } from '../imports/ui/App';
+import { AppContainer } from '../imports/containers/AppContainer';
 
 const theme = createMuiTheme();
 
@@ -21,7 +21,7 @@ Meteor.startup(() => {
     <ApolloProvider client={client}>
       <MuiThemeProvider theme={theme}>
         <BrowserRouter>
-          <App />
+          <AppContainer />
         </BrowserRouter>
       </MuiThemeProvider>
     </ApolloProvider>,
