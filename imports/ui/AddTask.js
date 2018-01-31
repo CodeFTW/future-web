@@ -69,7 +69,7 @@ export class AddTask extends React.Component {
           value={this.state.doDate}
           returnMoment={false}
           onChange={this.handleDoDateChange}
-          // minDate={new Date()}
+          minDate={new Date()}
         />
         <Button
           className="form-action"

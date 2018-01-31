@@ -15,7 +15,7 @@ const handleChange = (_id, flipTask) => () => {
 };
 
 const handleDays = (date) => {
-  const days = moment(date).diff(moment(), 'days');
+  const days = moment(date).startOf('day').diff(moment().startOf('day'), 'days');
   if(days > 4) {
     return 4;
   }

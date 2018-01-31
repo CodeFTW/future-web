@@ -35,26 +35,26 @@ body {
 @mixin task-priority($color)  {
   border-left-style: solid;
   border-left-color: $color;
-  border-left-width: 5px;
+  border-left-width: 15px;
 
 }
 .task-priority--1 {
   @include task-priority(#D50000);
 }
 .task-priority-0 {
-  @include task-priority(#FFD600);
+  @include task-priority(#0277BD);
 }
 .task-priority-1 {
-  @include task-priority(#DD2C00);
+  @include task-priority(#FFC107);
 }
 .task-priority-2 {
-  @include task-priority(#455A64);
+  @include task-priority(#004D40);
 }
 .task-priority-3 {
-  @include task-priority(#00C853);
+  @include task-priority(#4CAF50);
 }
 .task-priority-4 {
-  @include task-priority(#33691E);
+  @include task-priority(#69F0AE);
 }
 
 

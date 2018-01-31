@@ -4,7 +4,7 @@ import { resolverDateTime } from '../utils/dates';
 export const resolvers = {
   Query: {
     async tasks(root, args, context) {
-      return TasksCollection.find().fetch();
+      return TasksCollection.find({},{sort:{doDate:1}}).fetch();
     },
     async task(root, { _id }) {
       return TasksCollection.findOne(_id);
@@ -12,6 +12,7 @@ export const resolvers = {
   },
   Mutation: {
     async addTask(root, { task }) {
+      task.doDate.setHours(0,0,0,0);
       if (task._id) {
         TasksCollection.update(task._id, { $set: { ...task } });
         return TasksCollection.findOne(task._id);
