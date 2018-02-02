@@ -25,7 +25,7 @@ const taskQuery = gql`
       _id
       description
       details
-      doDate
+      dueDate
     }
   }
 `;

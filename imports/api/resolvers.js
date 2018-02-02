@@ -4,8 +4,8 @@ import { Users } from '../collections/UsersCollection';
 
 export const resolvers = {
   Query: {
-    async tasks(root, args, context) {
-      return TasksCollection.find({},{sort:{doDate:1}}).fetch();
+    async tasks(root, args, { userId }) {
+      return TasksCollection.find({ userId }, { sort: { dueDate: 1 } }).fetch();
     },
     async task(root, { _id }) {
       return TasksCollection.findOne(_id);
@@ -15,13 +15,13 @@ export const resolvers = {
     },
   },
   Mutation: {
-    async addTask(root, { task }) {
-      task.doDate.setHours(0,0,0,0);
+    async addTask(root, { task }, { userId }) {
+      task.dueDate.setHours(0, 0, 0, 0);
       if (task._id) {
         TasksCollection.update(task._id, { $set: { ...task } });
         return TasksCollection.findOne(task._id);
       }
-      return TasksCollection.findOne(TasksCollection.insert({ ...task }));
+      return TasksCollection.findOne(TasksCollection.insert({ userId, ...task }));
     },
     async flipTask(root, { _id }) {
       const task = TasksCollection.findOne(_id);

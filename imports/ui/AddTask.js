@@ -9,11 +9,11 @@ export class AddTask extends React.Component {
     description: '',
     details: '',
     done: false,
-    doDate: new Date(),
+    dueDate: new Date(),
   };
 
-  handleDoDateChange = doDate => {
-    this.setState({ doDate })
+  handledueDateChange = dueDate => {
+    this.setState({ dueDate })
   };
 
   componentWillReceiveProps(nextProps) {
@@ -25,7 +25,7 @@ export class AddTask extends React.Component {
       _id: data.task._id || null,
       description: data.task.description || '',
       details: data.task.details || '',
-      doDate: data.task.doDate || new Date(),
+      dueDate: data.task.dueDate || new Date(),
     });
   }
 
@@ -66,9 +66,9 @@ export class AddTask extends React.Component {
           fullWidth
         />
         <DatePicker
-          value={this.state.doDate}
+          value={this.state.dueDate}
           returnMoment={false}
-          onChange={this.handleDoDateChange}
+          onChange={this.handledueDateChange}
           minDate={new Date()}
         />
         <Button

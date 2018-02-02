@@ -43,7 +43,7 @@ const data = graphql(gql`
       description
       details
       done
-      doDate
+      dueDate
     }
   }
 `);

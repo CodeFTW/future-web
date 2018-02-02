@@ -12,7 +12,7 @@ input AddTaskInput {
   description: String!
   details: String
   done: Boolean
-  doDate: DateTime
+  dueDate: DateTime
 }
 
 type Mutation {
@@ -25,8 +25,8 @@ type Task {
   _id: ID!
   description: String!
   details: String
-  done: Boolean
-  doDate: DateTime
+  done: Boolean 
+  dueDate: DateTime
 }
 
 type User {
