@@ -1,19 +1,16 @@
 import React from 'react';
 import { Button, TextField } from 'material-ui';
-import { Add } from 'material-ui-icons';
+import { Save } from 'material-ui-icons';
 import PropTypes from 'prop-types';
 import { DatePicker } from 'material-ui-pickers';
 
 export class AddTask extends React.Component {
+  // eslint-disable-next-line no-undef
   state = {
     description: '',
     details: '',
     done: false,
     dueDate: new Date(),
-  };
-
-  handledueDateChange = dueDate => {
-    this.setState({ dueDate })
   };
 
   componentWillReceiveProps(nextProps) {
@@ -29,16 +26,23 @@ export class AddTask extends React.Component {
     });
   }
 
+  // eslint-disable-next-line no-undef
   onInputChange = ({ target: { name, value } }) =>
     this.setState({ [name]: value });
 
+  // eslint-disable-next-line no-undef
+  handleDueDateChange = dueDate => {
+    this.setState({ dueDate });
+  };
+
+  // eslint-disable-next-line no-undef
   addTaskAndGo = () => {
     const { router: { history } } = this.context;
     const { addTask } = this.props;
     addTask({
       variables: {
         task: {
-          ...this.state
+          ...this.state,
         },
       },
     }).then(({ data: { addTask: { _id } } }) => {
@@ -68,7 +72,7 @@ export class AddTask extends React.Component {
         <DatePicker
           value={this.state.dueDate}
           returnMoment={false}
-          onChange={this.handledueDateChange}
+          onChange={this.handleDueDateChange}
           minDate={new Date()}
         />
         <Button
@@ -77,7 +81,7 @@ export class AddTask extends React.Component {
           color="primary"
           onClick={this.addTaskAndGo}
         >
-          <Add /> Task
+          <Save /> Save
         </Button>
       </form>
     );

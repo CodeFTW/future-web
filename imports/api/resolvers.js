@@ -11,6 +11,9 @@ export const resolvers = {
       return TasksCollection.findOne(_id);
     },
     async loggedUser(root, args, { userId }) {
+      if (!userId) {
+        return null;
+      }
       return Users.findOne(userId);
     },
   },
@@ -21,7 +24,9 @@ export const resolvers = {
         TasksCollection.update(task._id, { $set: { ...task } });
         return TasksCollection.findOne(task._id);
       }
-      return TasksCollection.findOne(TasksCollection.insert({ userId, ...task }));
+      return TasksCollection.findOne(
+        TasksCollection.insert({ userId, ...task })
+      );
     },
     async flipTask(root, { _id }) {
       const task = TasksCollection.findOne(_id);

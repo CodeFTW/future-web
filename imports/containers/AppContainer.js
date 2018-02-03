@@ -1,18 +1,9 @@
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import { App } from '../ui/App';
 import PropTypes from 'prop-types';
 import { withContext, compose } from 'recompose';
+import { App } from '../ui/App';
+import { loggedUserQuery } from '../core/user/userQueries';
 
-const data = graphql(gql`
-  query LoggedUser {
-    loggedUser {
-      _id
-      email
-      name
-    }
-  }
-`);
+const data = loggedUserQuery;
 
 const enhance = withContext(
   {
@@ -20,7 +11,4 @@ const enhance = withContext(
   },
   ({ data: { loggedUser } }) => ({ loggedUser })
 );
-export const AppContainer = compose(
-  data,
-  enhance,
-)(App);
+export const AppContainer = compose(data, enhance)(App);

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Reboot from 'material-ui/Reboot';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -10,16 +10,16 @@ import { NavigationBar } from './NavigationBar';
 import { Routes } from './Routes';
 
 export class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { open: false };
-  }
+  // eslint-disable-next-line no-undef
+  state = { open: false };
 
+  // eslint-disable-next-line no-undef
   toggleMenu = () => {
     event.preventDefault();
     this.setState({ open: !this.state.open });
   };
 
+  // eslint-disable-next-line no-undef
   closeMenu = () => {
     event.preventDefault();
     this.setState({ open: false });

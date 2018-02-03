@@ -17,10 +17,12 @@ const styles = {
 };
 
 class NavigationBarComponent extends React.Component {
+  // eslint-disable-next-line no-undef
   state = {
     value: 0,
   };
 
+  // eslint-disable-next-line no-undef
   handleChange = (event, value) => {
     this.setState({ value });
   };
@@ -28,7 +30,6 @@ class NavigationBarComponent extends React.Component {
   render() {
     const { classes } = this.props;
     const { value } = this.state;
-    const { router: { history } } = this.context;
 
     return (
       <Paper elevation={10}>

@@ -1,19 +1,40 @@
-import React from 'react';
-import { List } from 'material-ui';
+import { Meteor } from 'meteor/meteor';
+import React, { Fragment } from 'react';
+import { compose } from 'recompose';
+import { withRouter } from 'react-router-dom';
+import { List, Button } from 'material-ui';
 import { Task } from './Task';
+import { getLoggedUserContext } from '../user/userContext';
 
-export const Tasks = ({ data: { loading, tasks }, ...rest }) => {
-  if (loading) {
-    return <div>loading...</div>;
+const enhance = compose(withRouter, getLoggedUserContext());
+export const Tasks = enhance(
+  ({ data: { loading, tasks }, loggedUser, history, ...rest }) => {
+    if (loading) {
+      return <div>loading...</div>;
+    }
+
+    const logoutButton = loggedUser ? (
+      <Button
+        className="form-action"
+        raised
+        color="primary"
+        onClick={() => Meteor.logout(() => history.push('/login'))}
+      >
+        Logout
+      </Button>
+    ) : null;
+
+    if (tasks.length === 0) {
+      return <div>{logoutButton} no tasks available</div>;
+    }
+
+    return (
+      <Fragment>
+        {logoutButton}
+        <List>
+          {tasks.map(item => <Task key={item._id} item={item} {...rest} />)}
+        </List>
+      </Fragment>
+    );
   }
-
-  if (tasks.length === 0) {
-    return <div>no tasks available</div>;
-  }
-
-  return (
-    <List>
-      {tasks.map(item => <Task key={item._id} item={item} {...rest} />)}
-    </List>
-  );
-};
+);

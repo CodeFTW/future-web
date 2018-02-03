@@ -2,27 +2,27 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { TasksContainer } from '../containers/TasksContainer';
 import { AddTaskContainer } from '../containers/AddTaskContainer';
-import { UserContainer } from '../containers/UserContainer';
 
-import { getLoggedUserContext } from '../user/userContext';
+import { LoginContainer } from './login/LoginContainer';
+import { loggedUserQuery } from '../core/user/userQueries';
 
-const enhance = getLoggedUserContext();
+const enhance = loggedUserQuery;
 const PrivateRoute = enhance(
-    ({ component: Component, loggedUser, ...rest }) => (
-        <Route
-            {...rest}
-            render={props =>
-                loggedUser ? <Component {...props} /> : <Redirect to="/UserContainer" />
-            }
-        />
-    )
+  ({ component: Component, data: { loggedUser }, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        loggedUser ? <Component {...props} /> : <Redirect to="/login" />
+      }
+    />
+  )
 );
 
-export const Routes = enhance(({ loggedUser }) => (
+export const Routes = () => (
   <Switch>
     <PrivateRoute exact path="/" component={TasksContainer} />
-    <Route path="/UserContainer" component={UserContainer} />
+    <Route path="/login" component={LoginContainer} />
     <PrivateRoute path="/add" component={AddTaskContainer} />
     <PrivateRoute path="/edit/:_id" component={AddTaskContainer} />
   </Switch>
-));
+);
