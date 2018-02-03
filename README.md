@@ -25,8 +25,6 @@ meteor npm start
 `
 meteor npm run style
 `
-## How to upgrade your fork to capture changes in the main project
-`Just follow the steps in this `[link](https://gist.github.com/rdeavila/9618969)
 
 # How to Contribute with Ideas
 Follow these steps:
@@ -48,6 +46,7 @@ Follow these steps:
 - Send your code 
   - don't forget to format your code before commit and have zero eslint erros/warnings
   - commit message should contains the issue id with #
+  - upgrade your fork to capture changes in the main project, check how to do it [here](https://gist.github.com/rdeavila/9618969)
 - Warn the maintainer that you are done
 - Wait for the merge
 - Start again :) 
