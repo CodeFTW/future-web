@@ -37,7 +37,7 @@ const handleRemove = (_id, removeTask) => () => {
 
 const enhance = compose(withRouter);
 export const Task = enhance(({ item, history, removeTask, flipTask }) => (
-  <Paper className={`task-priority-${handleDays(item.doDate)}` }>
+  <Paper className={`task-priority-${handleDays(item.dueDate)}` }>
     <ListItem>
       <Checkbox
         defaultChecked={item.done}
@@ -47,7 +47,7 @@ export const Task = enhance(({ item, history, removeTask, flipTask }) => (
       <ListItemText
         className={item.done ? 'task-done' : ''}
         primary={item.description}
-        secondary={`${item.details} - ${moment(item.doDate).format('DD/MM/YYYY')}`}
+        secondary={`${item.details} - ${moment(item.dueDate).format('DD/MM/YYYY')}`}
         onClick={handleClick(item._id, history)}
       />
 

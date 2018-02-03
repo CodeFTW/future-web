@@ -1,16 +1,28 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { TasksContainer } from '../containers/TasksContainer';
 import { AddTaskContainer } from '../containers/AddTaskContainer';
-import { Login } from './login/Login';
+import { UserContainer } from '../containers/UserContainer';
+
 import { getLoggedUserContext } from '../user/userContext';
 
 const enhance = getLoggedUserContext();
-export const Routes = enhance(({loggedUser}) => (
+const PrivateRoute = enhance(
+    ({ component: Component, loggedUser, ...rest }) => (
+        <Route
+            {...rest}
+            render={props =>
+                loggedUser ? <Component {...props} /> : <Redirect to="/UserContainer" />
+            }
+        />
+    )
+);
+
+export const Routes = enhance(({ loggedUser }) => (
   <Switch>
-    <Route exact path="/" component={TasksContainer} />
-    <Route path="/login" component={Login} />
-    <Route path="/add" component={AddTaskContainer} />
-    <Route path="/edit/:_id" component={AddTaskContainer} />
+    <PrivateRoute exact path="/" component={TasksContainer} />
+    <Route path="/UserContainer" component={UserContainer} />
+    <PrivateRoute path="/add" component={AddTaskContainer} />
+    <PrivateRoute path="/edit/:_id" component={AddTaskContainer} />
   </Switch>
 ));
