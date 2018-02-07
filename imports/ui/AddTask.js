@@ -81,7 +81,7 @@ export class AddTask extends React.Component {
           color="primary"
           onClick={this.addTaskAndGo}
         >
-          <Save /> Save
+          <Save />
         </Button>
       </form>
     );

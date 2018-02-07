@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Reboot from 'material-ui/Reboot';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -8,6 +8,7 @@ import Typography from 'material-ui/Typography';
 import { Menu } from './Menu';
 import { NavigationBar } from './NavigationBar';
 import { Routes } from './Routes';
+import { LoginContainer } from './login/LoginContainer';
 
 export class App extends React.Component {
   // eslint-disable-next-line no-undef
@@ -26,28 +27,37 @@ export class App extends React.Component {
   };
 
   render() {
+    if (this.props.data.loading) {
+      return null;
+    }
     return (
       <div className="app">
-        <Reboot />
-        <AppBar>
-          <Toolbar>
-            <IconButton
-              color="secondary"
-              aria-label="Menu"
-              onClick={this.toggleMenu}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography type="headline" color="inherit">
-              Meteor React Latest
-            </Typography>
-          </Toolbar>
-        </AppBar>
-        <Menu open={this.state.open} onSelectMenu={this.closeMenu} />
-        <div className="content" style={{ marginTop: 60 }}>
-          <Routes />
-        </div>
-        <NavigationBar />
+        {this.props.data.loggedUser ? (
+          <Fragment>
+            <Reboot />
+            <AppBar>
+              <Toolbar>
+                <IconButton
+                  color="secondary"
+                  aria-label="Menu"
+                  onClick={this.toggleMenu}
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Typography type="headline" color="inherit">
+                  Meteor React Latest
+                </Typography>
+              </Toolbar>
+            </AppBar>
+            <Menu open={this.state.open} onSelectMenu={this.closeMenu} />
+            <div className="content" style={{ marginTop: 60 }}>
+              <Routes />
+            </div>
+            <NavigationBar />
+          </Fragment>
+        ) : (
+          <LoginContainer />
+        )}
       </div>
     );
   }
