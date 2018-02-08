@@ -1,6 +1,6 @@
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import {Button, TextField, Paper} from 'material-ui';
+import {Button, TextField} from 'material-ui';
 import {Meteor} from 'meteor/meteor';
 import {Accounts} from 'meteor/accounts-base';
 
@@ -29,6 +29,9 @@ export class Login extends React.Component {
             error => {
                 // TODO handle it better
                 // eslint-disable-next-line no-console
+                if (!error) {
+                    this.props.login({variables:{_id: Meteor.userId()}});
+                }
                 console.log(error);
             }
         );
@@ -44,6 +47,9 @@ export class Login extends React.Component {
             },
             error => {
                 // eslint-disable-next-line no-console
+                if (!error) {
+                    this.props.login({variables:{_id: Meteor.userId()}});
+                }
                 console.log(error);
             }
         );
