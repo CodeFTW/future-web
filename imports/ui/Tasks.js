@@ -8,13 +8,7 @@ import { getLoggedUserContext } from '../user/userContext';
 
 const enhance = compose(withRouter, getLoggedUserContext());
 export const Tasks = enhance(
-  ({
-    data: { loading, tasks, refetch },
-    loggedUser,
-    history,
-    logout,
-    ...rest
-  }) => {
+  ({ data: { loading, tasks }, loggedUser, history, logout, ...rest }) => {
     if (loading) {
       return <div>loading...</div>;
     }
@@ -38,7 +32,6 @@ export const Tasks = enhance(
     if (tasks.length === 0) {
       return <div>{logoutButton} no tasks available</div>;
     }
-    refetch();
 
     return (
       <Fragment>

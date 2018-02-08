@@ -44,6 +44,7 @@ class NavigationBarComponent extends React.Component {
             icon={<ViewList />}
             component={Link}
             to="/"
+            id="bottomNavigationActionTasks"
           />
           <BottomNavigationAction
             label="Add"
