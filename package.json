@@ -24,6 +24,7 @@
     "material-ui": "^1.0.0-beta.30",
     "material-ui-icons": "^1.0.0-beta.17",
     "material-ui-pickers": "^1.0.0-beta.13.1",
+    "material-ui-snackbar-provider": "^1.0.0-pre.3",
     "meteor-node-stubs": "~0.3.2",
     "moment": "^2.20.1",
     "prop-types": "^15.6.0",
