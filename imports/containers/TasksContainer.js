@@ -1,10 +1,10 @@
-import {graphql, compose} from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import {Tasks} from '/imports/ui/Tasks';
+import { Tasks } from '/imports/ui/Tasks';
 
 export const flipTaskMutation = graphql(
-    gql`
+  gql`
     mutation flipTask($_id: ID!) {
       flipTask(_id: $_id) {
         _id
@@ -13,27 +13,27 @@ export const flipTaskMutation = graphql(
       }
     }
   `,
-    {
-        name: 'flipTask',
-        options: {
-            refetchQueries: ['Tasks'],
-        },
-    }
+  {
+    name: 'flipTask',
+    options: {
+      refetchQueries: ['Tasks'],
+    },
+  }
 );
 export const removeTaskMutation = graphql(
-    gql`
+  gql`
     mutation removeTask($_id: ID!) {
       removeTask(_id: $_id) {
         _id
       }
     }
   `,
-    {
-        name: 'removeTask',
-        options: {
-            refetchQueries: ['Tasks'],
-        },
-    }
+  {
+    name: 'removeTask',
+    options: {
+      refetchQueries: ['Tasks'],
+    },
+  }
 );
 
 const data = graphql(gql`
@@ -48,23 +48,25 @@ const data = graphql(gql`
   }
 `);
 
-
-const logoutUser = graphql(gql`
-    mutation logout($_id: ID){
-        login(_id: $_id) {
-            _id
-        }
+const logoutUser = graphql(
+  gql`
+    mutation logout($_id: ID) {
+      login(_id: $_id) {
+        _id
+      }
     }
-`, {
-    name: "logout",
+  `,
+  {
+    name: 'logout',
     options: {
-        refetchQueries: ["LoggedUser"]
-    }
-});
+      refetchQueries: ['LoggedUser'],
+    },
+  }
+);
 
 export const TasksContainer = compose(
-    data,
-    flipTaskMutation,
-    removeTaskMutation,
-    logoutUser
+  data,
+  flipTaskMutation,
+  removeTaskMutation,
+  logoutUser
 )(Tasks);
