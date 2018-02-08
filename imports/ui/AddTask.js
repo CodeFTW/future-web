@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
-import { Button, TextField, Snackbar } from 'material-ui';
+import { Button, TextField } from 'material-ui';
 import { Save } from 'material-ui-icons';
 import { DatePicker } from 'material-ui-pickers';
+import { Error } from './error/error';
 
 export class AddTask extends React.Component {
   // eslint-disable-next-line no-undef
@@ -10,7 +11,7 @@ export class AddTask extends React.Component {
     details: '',
     done: false,
     dueDate: new Date(),
-    open: false,
+    error: false,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -60,8 +61,15 @@ export class AddTask extends React.Component {
         });
       document.getElementById('bottomNavigationActionTasks').click();
     } else {
-      this.setState({ open: !this.state.open });
+      this.setState({ error: true });
     }
+  };
+
+  // eslint-disable-next-line no-undef
+  callBack = () => {
+    this.setState({
+      error: false,
+    });
   };
 
   render() {
@@ -98,9 +106,10 @@ export class AddTask extends React.Component {
             <Save />
           </Button>
         </form>
-        <Snackbar
-          open={this.state.open}
+        <Error
+          error={this.state.error}
           message="The field Description is required"
+          onCallBack={this.callBack}
         />
       </Fragment>
     );

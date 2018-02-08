@@ -1,0 +1,31 @@
+#errorComponent {
+    margin: 10px 0;
+    background-color: rgba(0,0,0,0.8);
+    color: aliceblue;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    top: 85vh;
+    width: 98.5vw;
+    transition: all 1s;
+    z-index: 0;
+    opacity: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#errorComponent.show {
+    z-index: 1000;
+    opacity: 1;
+}
+
+.button {
+    padding: 5px;
+    background: none;
+    border: 1px solid azure;
+    color: beige;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
