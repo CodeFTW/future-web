@@ -9,6 +9,7 @@
     "style": "npm run pret && npm run lint"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.39",
     "apollo-cache-inmemory": "^1.1.5",
     "apollo-client": "^2.2.0",
     "apollo-link": "^1.0.7",
