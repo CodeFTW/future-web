@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import './styles.css';
 
-const test = onCallBack => () => {
+const onCallBackClick = onCallBack => () => {
   document.getElementById('errorComponent').classList.remove('show');
   onCallBack();
 };
@@ -11,7 +11,7 @@ export const Error = ({ error, message, onCallBack }) => (
     {error && message && onCallBack ? (
       <span id="errorComponent" className="show">
         {message}
-        <button onClick={test(onCallBack)} className="button">
+        <button onClick={onCallBackClick(onCallBack)} className="button">
           Ok! I got it
         </button>
       </span>
