@@ -107,7 +107,7 @@ export class AddTask extends React.Component {
             color="primary"
             onClick={this.addTaskAndGo}
           >
-            <Save/>
+            <Save />
           </Button>
         </form>
         <Error

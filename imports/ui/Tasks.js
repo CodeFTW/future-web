@@ -20,7 +20,6 @@ class TasksComponent extends React.Component {
       loggedUser,
       history,
       client,
-      ...rest
     } = this.props;
 
     if (loading) {

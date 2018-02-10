@@ -35,6 +35,9 @@ const data = graphql(taskQuery, {
   options: ownProps => ({ variables: { taskId: ownProps.match.params._id } }),
 });
 
-export const AddTaskContainer = compose(addTaskMutation, data, withRouter, withApollo)(
-  AddTask
-);
+export const AddTaskContainer = compose(
+  addTaskMutation,
+  data,
+  withRouter,
+  withApollo
+)(AddTask);
