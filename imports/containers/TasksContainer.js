@@ -15,9 +15,6 @@ export const flipTaskMutation = graphql(
   `,
   {
     name: 'flipTask',
-    options: {
-      refetchQueries: ['Tasks'],
-    },
   }
 );
 export const removeTaskMutation = graphql(
@@ -30,9 +27,6 @@ export const removeTaskMutation = graphql(
   `,
   {
     name: 'removeTask',
-    options: {
-      refetchQueries: ['Tasks'],
-    },
   }
 );
 

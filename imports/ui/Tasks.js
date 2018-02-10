@@ -62,7 +62,7 @@ class TasksComponent extends React.Component {
             .filter(task =>
               task.description.toLowerCase().includes(this.state.search)
             )
-            .map(item => <Task key={item._id} item={item} {...rest} />)}
+            .map(item => <Task key={item._id} item={item} {...this.props} />)}
         </List>
       </Fragment>
     );

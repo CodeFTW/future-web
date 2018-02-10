@@ -56,6 +56,7 @@ export class AddTask extends React.Component {
       })
         .then(() => {
           // TODO when we have the cache working correctly after an update we can remove this
+          // https://github.com/CodeFTW/meteor-react-latest/issues/34
           client.resetStore();
           history.push('/');
         })
