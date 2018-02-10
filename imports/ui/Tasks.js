@@ -50,7 +50,12 @@ class TasksComponent extends React.Component {
       <Fragment>
         <div>{logoutButton}</div>
         <div>
-          <TextField name="search" onChange={this.onInputChange} />
+          <TextField
+            placeholder="Search"
+            fullWidth
+            name="search"
+            onChange={this.onInputChange}
+          />
         </div>
         <List>
           {tasks
