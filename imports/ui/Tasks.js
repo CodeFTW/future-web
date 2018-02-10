@@ -2,13 +2,27 @@ import { Meteor } from 'meteor/meteor';
 import React, { Fragment } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import { List, Button } from 'material-ui';
+import { List, Button, TextField } from 'material-ui';
 import { Task } from './Task';
 import { getLoggedUserContext } from '../user/userContext';
 
-const enhance = compose(withRouter, getLoggedUserContext());
-export const Tasks = enhance(
-  ({ data: { loading, tasks }, loggedUser, history, client, ...rest }) => {
+class TasksComponent extends React.Component {
+  // eslint-disable-next-line no-undef
+  state = { search: '' };
+
+  // eslint-disable-next-line no-undef
+  onInputChange = ({ target: { name, value } }) =>
+    this.setState({ [name]: value.toLowerCase() });
+
+  render() {
+    const {
+      data: { loading, tasks },
+      loggedUser,
+      history,
+      client,
+      ...rest
+    } = this.props;
+
     if (loading) {
       return <div>loading...</div>;
     }
@@ -34,11 +48,21 @@ export const Tasks = enhance(
 
     return (
       <Fragment>
-        {logoutButton}
+        <div>{logoutButton}</div>
+        <div>
+          <TextField name="search" onChange={this.onInputChange} />
+        </div>
         <List>
-          {tasks.map(item => <Task key={item._id} item={item} {...rest} />)}
+          {tasks
+            .filter(task =>
+              task.description.toLowerCase().includes(this.state.search)
+            )
+            .map(item => <Task key={item._id} item={item} {...rest} />)}
         </List>
       </Fragment>
     );
   }
-);
+}
+
+const enhance = compose(withRouter, getLoggedUserContext());
+export const Tasks = compose(enhance)(TasksComponent);
