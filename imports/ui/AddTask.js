@@ -42,7 +42,7 @@ export class AddTask extends React.Component {
   // eslint-disable-next-line no-undef
   addTaskAndGo = () => {
     if (this.handleSubmitTaks()) {
-      const { addTask, history } = this.props;
+      const { addTask, history, client } = this.props;
       addTask({
         variables: {
           task: {
@@ -55,6 +55,8 @@ export class AddTask extends React.Component {
         },
       })
         .then(() => {
+          // TODO when we have the cache working correctly after an update we can remove this
+          client.resetStore();
           history.push('/');
         })
         .catch(error => {
@@ -104,7 +106,7 @@ export class AddTask extends React.Component {
             color="primary"
             onClick={this.addTaskAndGo}
           >
-            <Save />
+            <Save/>
           </Button>
         </form>
         <Error
