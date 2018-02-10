@@ -1,4 +1,4 @@
-import { graphql, compose } from 'react-apollo';
+import { graphql, compose, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import { Tasks } from '/imports/ui/Tasks';
@@ -48,25 +48,9 @@ const data = graphql(gql`
   }
 `);
 
-const logoutUser = graphql(
-  gql`
-    mutation logout($_id: ID) {
-      login(_id: $_id) {
-        _id
-      }
-    }
-  `,
-  {
-    name: 'logout',
-    options: {
-      refetchQueries: ['LoggedUser'],
-    },
-  }
-);
-
 export const TasksContainer = compose(
   data,
   flipTaskMutation,
   removeTaskMutation,
-  logoutUser
+  withApollo
 )(Tasks);

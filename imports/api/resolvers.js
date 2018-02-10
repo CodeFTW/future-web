@@ -38,12 +38,6 @@ export const resolvers = {
       // TODO check how to return a boolean in GraphQL
       return { _id };
     },
-    async login(root, { _id }) {
-      return { _id };
-    },
-    async logout(root, { _id }) {
-      return { _id };
-    },
   },
   DateTime: resolverDateTime,
 };

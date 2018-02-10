@@ -27,9 +27,6 @@ export class App extends React.Component {
   };
 
   render() {
-    if (this.props.data.loading) {
-      return null;
-    }
     return (
       <div className="app">
         {this.props.data.loggedUser ? (

@@ -31,9 +31,7 @@ export class Login extends React.Component {
       this.state.passwordLogin,
       error => {
         // TODO handle it better
-        if (!error) {
-          this.props.login({ variables: { _id: Meteor.userId() } });
-        } else {
+        if (error) {
           this.setState({ error: true });
           if (error.error === 403) {
             this.setState({
@@ -58,9 +56,7 @@ export class Login extends React.Component {
         password: this.state.passwordSubscribe,
       },
       error => {
-        if (!error) {
-          this.props.login({ variables: { _id: Meteor.userId() } });
-        } else {
+        if (error) {
           this.setState({
             error: true,
             messageError: 'No data was entered',

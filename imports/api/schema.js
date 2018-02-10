@@ -19,8 +19,6 @@ type Mutation {
   addTask(task: AddTaskInput!): Task
   flipTask(_id: ID!): Task
   removeTask(_id: ID!): Task
-  login(_id: ID!):User
-  logout(_id: ID!):User
 }
 
 type Task {

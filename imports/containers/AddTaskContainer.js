@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
-
+import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { AddTask } from '../ui/AddTask';
 
@@ -38,4 +38,6 @@ const data = graphql(taskQuery, {
   options: ownProps => ({ variables: { taskId: ownProps.match.params._id } }),
 });
 
-export const AddTaskContainer = compose(addTaskMutation, data)(AddTask);
+export const AddTaskContainer = compose(addTaskMutation, data, withRouter)(
+  AddTask
+);

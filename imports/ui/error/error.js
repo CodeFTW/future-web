@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import './styles.css';
+import './error.scss';
 
 const onCallBackClick = onCallBack => () => {
   document.getElementById('errorComponent').classList.remove('show');

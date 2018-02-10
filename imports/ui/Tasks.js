@@ -8,7 +8,7 @@ import { getLoggedUserContext } from '../user/userContext';
 
 const enhance = compose(withRouter, getLoggedUserContext());
 export const Tasks = enhance(
-  ({ data: { loading, tasks }, loggedUser, history, logout, ...rest }) => {
+  ({ data: { loading, tasks }, loggedUser, history, client, ...rest }) => {
     if (loading) {
       return <div>loading...</div>;
     }
@@ -20,8 +20,7 @@ export const Tasks = enhance(
         color="primary"
         onClick={() =>
           Meteor.logout(() => {
-            // TODO How create a mutation without parameters
-            logout({ variables: { _id: 'Generic Id' } });
+            client.resetStore().then(() => history.push('/login'));
           })
         }
       >

@@ -42,7 +42,7 @@ export class AddTask extends React.Component {
   // eslint-disable-next-line no-undef
   addTaskAndGo = () => {
     if (this.handleSubmitTaks()) {
-      const { addTask } = this.props;
+      const { addTask, history } = this.props;
       addTask({
         variables: {
           task: {
@@ -54,12 +54,13 @@ export class AddTask extends React.Component {
           },
         },
       })
-        .then(() => {})
+        .then(() => {
+          history.push('/');
+        })
         .catch(error => {
           // eslint-disable-next-line no-console
           console.log(error);
         });
-      document.getElementById('bottomNavigationActionTasks').click();
     } else {
       this.setState({ error: true });
     }
