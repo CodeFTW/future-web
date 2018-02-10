@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Button, TextField } from 'material-ui';
 import { Save } from 'material-ui-icons';
-import PropTypes from 'prop-types';
 import { DatePicker } from 'material-ui-pickers';
+import { Error } from './error/error';
 
 export class AddTask extends React.Component {
   // eslint-disable-next-line no-undef
@@ -11,6 +11,7 @@ export class AddTask extends React.Component {
     details: '',
     done: false,
     dueDate: new Date(),
+    error: false,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -36,60 +37,81 @@ export class AddTask extends React.Component {
   };
 
   // eslint-disable-next-line no-undef
+  handleSubmitTaks = () => !!this.state.description;
+
+  // eslint-disable-next-line no-undef
   addTaskAndGo = () => {
-    const { router: { history } } = this.context;
-    const { addTask } = this.props;
-    addTask({
-      variables: {
-        task: {
-          ...this.state,
+    if (this.handleSubmitTaks()) {
+      const { addTask } = this.props;
+      addTask({
+        variables: {
+          task: {
+            _id: this.state._id,
+            description: this.state.description,
+            details: this.state.details,
+            dueDate: this.state.dueDate,
+            done: this.state.done,
+          },
         },
-      },
-    }).then(({ data: { addTask: { _id } } }) => {
-      if (_id) {
-        history.push('/');
-      }
+      })
+        .then(() => {})
+        .catch(error => {
+          // eslint-disable-next-line no-console
+          console.log(error);
+        });
+      document.getElementById('bottomNavigationActionTasks').click();
+    } else {
+      this.setState({ error: true });
+    }
+  };
+
+  // eslint-disable-next-line no-undef
+  callBack = () => {
+    this.setState({
+      error: false,
     });
   };
 
   render() {
     return (
-      <form className="form">
-        <TextField
-          name="description"
-          label="Description"
-          value={this.state.description}
-          onChange={this.onInputChange}
-          fullWidth
+      <Fragment>
+        <form className="form">
+          <TextField
+            name="description"
+            label="Description"
+            value={this.state.description}
+            onChange={this.onInputChange}
+            fullWidth
+            required
+          />
+          <TextField
+            name="details"
+            label="Details"
+            value={this.state.details}
+            onChange={this.onInputChange}
+            fullWidth
+          />
+          <DatePicker
+            value={this.state.dueDate}
+            returnMoment={false}
+            onChange={this.handleDueDateChange}
+            minDate={new Date()}
+          />
+          <Button
+            className="form-action"
+            raised
+            color="primary"
+            onClick={this.addTaskAndGo}
+          >
+            <Save />
+          </Button>
+        </form>
+        <Error
+          error={this.state.error}
+          message="The field Description is required"
+          onCallBack={this.callBack}
         />
-        <TextField
-          name="details"
-          label="Details"
-          value={this.state.details}
-          onChange={this.onInputChange}
-          fullWidth
-        />
-        <DatePicker
-          value={this.state.dueDate}
-          returnMoment={false}
-          onChange={this.handleDueDateChange}
-          minDate={new Date()}
-        />
-        <Button
-          className="form-action"
-          raised
-          color="primary"
-          onClick={this.addTaskAndGo}
-        >
-          <Save /> Save
-        </Button>
-      </form>
+      </Fragment>
     );
   }
 }
-
-AddTask.contextTypes = {
-  router: PropTypes.shape({
-    history: PropTypes.object.isRequired,
-  }),
-};

@@ -48,8 +48,25 @@ const data = graphql(gql`
   }
 `);
 
+const logoutUser = graphql(
+  gql`
+    mutation logout($_id: ID) {
+      login(_id: $_id) {
+        _id
+      }
+    }
+  `,
+  {
+    name: 'logout',
+    options: {
+      refetchQueries: ['LoggedUser'],
+    },
+  }
+);
+
 export const TasksContainer = compose(
   data,
   flipTaskMutation,
-  removeTaskMutation
+  removeTaskMutation,
+  logoutUser
 )(Tasks);

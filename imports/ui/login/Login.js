@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { Button, TextField } from 'material-ui';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
+import { Error } from '../error/error';
 
 const loginFacebook = () => {
   Meteor.loginWithFacebook({
@@ -18,6 +19,8 @@ export class Login extends React.Component {
     passwordLogin: '',
     emailSubscribe: '',
     passwordSubscribe: '',
+    error: false,
+    messageError: '',
   };
 
   // eslint-disable-next-line no-undef
@@ -28,8 +31,20 @@ export class Login extends React.Component {
       this.state.passwordLogin,
       error => {
         // TODO handle it better
-        // eslint-disable-next-line no-console
-        console.log(error);
+        if (!error) {
+          this.props.login({ variables: { _id: Meteor.userId() } });
+        } else {
+          this.setState({ error: true });
+          if (error.error === 403) {
+            this.setState({
+              messageError: 'The email or password is wrong',
+            });
+          } else {
+            this.setState({
+              messageError: 'No data was entered',
+            });
+          }
+        }
       }
     );
   };
@@ -43,8 +58,14 @@ export class Login extends React.Component {
         password: this.state.passwordSubscribe,
       },
       error => {
-        // eslint-disable-next-line no-console
-        console.log(error);
+        if (!error) {
+          this.props.login({ variables: { _id: Meteor.userId() } });
+        } else {
+          this.setState({
+            error: true,
+            messageError: 'No data was entered',
+          });
+        }
       }
     );
   };
@@ -53,6 +74,13 @@ export class Login extends React.Component {
   handleInput = ({ target: { name, value } }) =>
     this.setState({ [name]: value });
 
+  // eslint-disable-next-line no-undef
+  callBack = () => {
+    this.setState({
+      error: false,
+    });
+  };
+
   render() {
     const { data: { loggedUser } } = this.props;
     if (loggedUser) {
@@ -60,58 +88,80 @@ export class Login extends React.Component {
     }
     return (
       <div>
+        {/* Form for login */}
+        <h2>Sing In</h2>
+        <div className="paper-style">
+          <form onSubmit={this.onSubmitLoginWithEmail} className="form">
+            <TextField
+              name="emailLogin"
+              label="Login"
+              value={this.state.emailLogin}
+              onChange={this.handleInput}
+              type="email"
+              fullWidth
+            />
+            <TextField
+              name="passwordLogin"
+              label="Password"
+              value={this.state.passwordLogin}
+              onChange={this.handleInput}
+              type="password"
+              fullWidth
+            />
+            <Button
+              className="form-action"
+              raised
+              color="primary"
+              type="submit"
+            >
+              Login
+            </Button>
+          </form>
+        </div>
+        {/* Form for Subscribe */}
+        <h2>Create Account</h2>
+        <div className="paper-style">
+          <form onSubmit={this.onSubmitSubscribeWithEmail} className="form">
+            <TextField
+              name="emailSubscribe"
+              label="Subscribe"
+              value={this.state.emailSubscribe}
+              onChange={this.handleInput}
+              type="email"
+              fullWidth
+            />
+            <TextField
+              name="passwordSubscribe"
+              label="Password"
+              value={this.state.passwordSubscribe}
+              onChange={this.handleInput}
+              type="password"
+              fullWidth
+            />
+            <Button
+              className="form-action"
+              raised
+              color="primary"
+              type="submit"
+            >
+              Subscribe
+            </Button>
+          </form>
+        </div>
         <Button
           className="form-action"
           raised
           color="primary"
           onClick={() => loginFacebook()}
+          fullWidth
         >
           Login com Facebook
         </Button>
-        {/* Form for login */}
-        <form onSubmit={this.onSubmitLoginWithEmail}>
-          <TextField
-            name="emailLogin"
-            label="Login"
-            value={this.state.emailLogin}
-            onChange={this.handleInput}
-            type="email"
-            fullWidth
-          />
-          <TextField
-            name="passwordLogin"
-            label="Password"
-            value={this.state.passwordLogin}
-            onChange={this.handleInput}
-            type="password"
-            fullWidth
-          />
-          <Button className="form-action" raised color="primary" type="submit">
-            Login
-          </Button>
-        </form>
-        {/* Form for Subscribe */}
-        <form onSubmit={this.onSubmitSubscribeWithEmail}>
-          <TextField
-            name="emailSubscribe"
-            label="Subscribe"
-            value={this.state.emailSubscribe}
-            onChange={this.handleInput}
-            type="email"
-            fullWidth
-          />
-          <TextField
-            name="passwordSubscribe"
-            label="Password"
-            value={this.state.passwordSubscribe}
-            onChange={this.handleInput}
-            type="password"
-            fullWidth
-          />
-          <Button className="form-action" raised color="primary" type="submit">
-            Subscribe
-          </Button>
-        </form>
+        <Error
+          error={this.state.error}
+          message={this.state.messageError}
+          onCallBack={this.callBack}
+        />
       </div>
     );
   }

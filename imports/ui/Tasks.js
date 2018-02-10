@@ -8,7 +8,7 @@ import { getLoggedUserContext } from '../user/userContext';
 
 const enhance = compose(withRouter, getLoggedUserContext());
 export const Tasks = enhance(
-  ({ data: { loading, tasks }, loggedUser, history, ...rest }) => {
+  ({ data: { loading, tasks }, loggedUser, history, logout, ...rest }) => {
     if (loading) {
       return <div>loading...</div>;
     }
@@ -18,7 +18,12 @@ export const Tasks = enhance(
         className="form-action"
         raised
         color="primary"
-        onClick={() => Meteor.logout(() => history.push('/login'))}
+        onClick={() =>
+          Meteor.logout(() => {
+            // TODO How create a mutation without parameters
+            logout({ variables: { _id: 'Generic Id' } });
+          })
+        }
       >
         Logout
       </Button>
