@@ -79,7 +79,13 @@ body {
   align-items: center;
 }
 
-.paper-style {
-    margin: 20px 5px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.7);
+.login {
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  .login-box {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
 }

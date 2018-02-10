@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Button, TextField } from 'material-ui';
+import { Button, TextField, Paper } from 'material-ui';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Error } from '../error/error';
@@ -87,10 +87,9 @@ export class Login extends React.Component {
       return <Redirect to={'/'} />;
     }
     return (
-      <div>
-        {/* Form for login */}
+      <div className="content login">
         <h2>Sing In</h2>
-        <div className="paper-style">
+        <Paper elevation={5} className="login-box">
           <form onSubmit={this.onSubmitLoginWithEmail} className="form">
             <TextField
               name="emailLogin"
@@ -117,10 +116,9 @@ export class Login extends React.Component {
               Login
             </Button>
           </form>
-        </div>
-        {/* Form for Subscribe */}
+        </Paper>
         <h2>Create Account</h2>
-        <div className="paper-style">
+        <Paper elevation={5} className="login-box">
           <form onSubmit={this.onSubmitSubscribeWithEmail} className="form">
             <TextField
               name="emailSubscribe"
@@ -147,7 +145,7 @@ export class Login extends React.Component {
               Subscribe
             </Button>
           </form>
-        </div>
+        </Paper>
         <Button
           className="form-action"
           raised
