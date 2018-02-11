@@ -1,12 +1,12 @@
 {
   "name": "@codeftw/future-web-graphql-date-time-resolver",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
     "compile": "babel *.js --presets babel-preset-es2015 --out-file dist/index.js",
     "compile-watch": "npm run compile -- --watch",
-    "prepublish": "npm run compile"
+    "prepare": "npm run compile"
   },
   "repository": {
     "type": "git",
