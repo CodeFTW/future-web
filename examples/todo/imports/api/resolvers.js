@@ -38,6 +38,10 @@ export const resolvers = {
       // TODO check how to return a boolean in GraphQL
       return { _id };
     },
+    async removeTasksChecked() {
+      const tasks = TasksCollection.find({ done: true });
+      tasks.forEach(task => TasksCollection.remove({ _id: task._id }));
+    },
   },
   DateTime: resolverDateTime,
 };

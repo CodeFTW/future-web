@@ -29,6 +29,18 @@ export const removeTaskMutation = graphql(
     name: 'removeTask',
   }
 );
+export const removeTasksChecked = graphql(
+  gql`
+    mutation removeTasksChecked {
+      removeTasksChecked {
+        _id
+      }
+    }
+  `,
+  {
+    name: 'removeTasksChecked',
+  }
+);
 
 const data = graphql(gql`
   query Tasks {
@@ -46,5 +58,6 @@ export const TasksContainer = compose(
   data,
   flipTaskMutation,
   removeTaskMutation,
+  removeTasksChecked,
   withApollo
 )(Tasks);

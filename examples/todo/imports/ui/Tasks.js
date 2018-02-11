@@ -14,6 +14,13 @@ class TasksComponent extends React.Component {
   onInputChange = ({ target: { name, value } }) =>
     this.setState({ [name]: value.toLowerCase() });
 
+  // eslint-disable-next-line no-undef
+  handleRemoveTasksChecked = ({ removeTasksChecked, client }) => () => {
+    removeTasksChecked().then(() => {
+      client.resetStore();
+    });
+  };
+
   render() {
     const {
       data: { loading, tasks },
@@ -21,7 +28,6 @@ class TasksComponent extends React.Component {
       history,
       client,
     } = this.props;
-
     if (loading) {
       return <div>loading...</div>;
     }
@@ -55,6 +61,13 @@ class TasksComponent extends React.Component {
             name="search"
             onChange={this.onInputChange}
           />
+          <Button
+            className="form-action"
+            color="primary"
+            onClick={this.handleRemoveTasksChecked({ ...this.props })}
+          >
+            Delete all tasks checked
+          </Button>
         </div>
         <List>
           {tasks

@@ -19,6 +19,7 @@ type Mutation {
   addTask(task: AddTaskInput!): Task
   flipTask(_id: ID!): Task
   removeTask(_id: ID!): Task
+  removeTasksChecked: Task
 }
 
 type Task {
