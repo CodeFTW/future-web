@@ -1,10 +1,10 @@
 {
   "name": "@codeftw/future-web-graphql-date-time-resolver",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "compile": "babel *.js --presets babel-preset-es2015 --out-file dist/index.js",
+    "compile": "babel src/*.js --presets babel-preset-es2015 --out-file index.js",
     "compile-watch": "npm run compile -- --watch",
     "prepare": "npm run compile"
   },
