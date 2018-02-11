@@ -7,11 +7,14 @@ Start kit repository using:
 - Material-UI (UI component library)
 - Flexbox (css feature to organize HTML elements)
 
-The goal is always to keep this repository up-to-date dependency-wise and with great organization. We can also extract common parts and publish npm and meteor packages, that way this repository can be cloned or forked to start new products with this stack. 
+The goal is always to keep this repository up-to-date dependency-wise and with great organization. We can also extract common parts and publish npm and meteor packages, that way this repository can be cloned or forked to start new products with this stack. PRs welcome with ideas to new modules.
 
 Maybe in the future we have a simple skeleton here that depends on external packages without any code to be deleted after cloned to create a new product. Right now we have sample and start kit code together.
 
 To have a path to follow we choose to build a TODO App as a working sample [/examples/todo](https://github.com/CodeFTW/future-web/tree/master/examples/todo), we know, there are a lot of them out there, it is just to practice and learn.
+
+# Who are we?
+A group of people who believes that code can change people's lives for better. We are CodeFTW [Learn more](http://codeftw.com/index-en.html) and join us in [Slack](https://slackincodeftw.herokuapp.com/)
 
 # How to Contribute with Ideas
 Follow these steps:
