@@ -42,6 +42,8 @@ export class Login extends React.Component {
               messageError: 'No data was entered',
             });
           }
+        } else {
+          this.props.client.resetStore();
         }
       }
     );
@@ -61,6 +63,8 @@ export class Login extends React.Component {
             error: true,
             messageError: 'No data was entered',
           });
+        } else {
+          this.props.client.resetStore();
         }
       }
     );
