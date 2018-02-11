@@ -1,4 +1,4 @@
-# Meteor React Latest
+# Future Web
 
 Start kit repository using:
 - Meteor (build tool, backend/frontend setup)
@@ -11,20 +11,7 @@ The goal is always to keep this repository up-to-date dependency-wise and with g
 
 Maybe in the future we have a simple skeleton here that depends on external packages without any code to be deleted after cloned to create a new product. Right now we have sample and start kit code together.
 
-To have a path to follow we choose to build a TODO App as a working sample, we know, there are a lot of them out there, it is just to practice and learn.
-
-## How to setup
-`
-meteor npm install
-`
-## How to run
-`
-meteor npm start
-`
-## How to format before commit
-`
-meteor npm run style
-`
+To have a path to follow we choose to build a TODO App as a working sample [/examples/todo](https://github.com/CodeFTW/future-web/tree/master/examples/todo), we know, there are a lot of them out there, it is just to practice and learn.
 
 # How to Contribute with Ideas
 Follow these steps:
