@@ -1,5 +1,5 @@
+import { resolverDateTime } from '@codeftw/future-web-graphql-date-time-resolver';
 import { TasksCollection } from '../collections/Tasks';
-import { resolverDateTime } from '../utils/dates';
 import { Users } from '../collections/UsersCollection';
 
 export const resolvers = {
