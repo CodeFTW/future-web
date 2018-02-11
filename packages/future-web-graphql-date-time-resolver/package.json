@@ -11,5 +11,8 @@
     "url": "git+https://github.com/CodeFTW/future-web/tree/master/packages/future-web-graphql-date-time-resolver"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }
