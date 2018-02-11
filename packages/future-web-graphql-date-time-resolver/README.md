@@ -1,4 +1,4 @@
-#Date Time Resolver for GraphQL
+# Date Time Resolver for GraphQL
 
 [![npm version](https://badge.fury.io/js/%40codeftw%2Ffuture-web-graphql-date-time-resolver.svg)](https://badge.fury.io/js/%40codeftw%2Ffuture-web-graphql-date-time-resolver)
 
