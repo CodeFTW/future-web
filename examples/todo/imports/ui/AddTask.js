@@ -37,7 +37,7 @@ export class AddTask extends React.Component {
   };
 
   // eslint-disable-next-line no-undef
-  handleSubmitTaks = () => !!this.state.description;
+  handleSubmitTaks = () => !!this.state.description.trim();
 
   // eslint-disable-next-line no-undef
   addTaskAndGo = () => {
