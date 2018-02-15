@@ -60,6 +60,7 @@ class TasksComponent extends React.Component {
             fullWidth
             name="search"
             onChange={this.onInputChange}
+            value={this.state.search}
           />
           <Button
             className="form-action"
