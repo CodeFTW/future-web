@@ -86,6 +86,7 @@ export class AddTask extends React.Component {
             value={this.state.description}
             onChange={this.onInputChange}
             fullWidth
+            autoFocus
             required
           />
           <TextField
