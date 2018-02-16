@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { List, Button, TextField } from 'material-ui';
 import { Task } from './Task';
 import { getLoggedUserContext } from '../user/userContext';
+import { updateAppTitle } from './components/uis';
 
 class TasksComponent extends React.Component {
   // eslint-disable-next-line no-undef
@@ -53,6 +54,7 @@ class TasksComponent extends React.Component {
 
     return (
       <Fragment>
+        {updateAppTitle('Tasks')}
         <div>{logoutButton}</div>
         <div>
           <TextField

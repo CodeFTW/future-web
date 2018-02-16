@@ -1,5 +1,6 @@
-import { Meteor } from 'meteor/meteor';
 import React from 'react';
+import { TunnelProvider } from 'react-tunnels';
+import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
@@ -20,9 +21,11 @@ Meteor.startup(() => {
   render(
     <ApolloProvider client={client}>
       <MuiThemeProvider theme={theme}>
-        <BrowserRouter>
-          <AppContainer />
-        </BrowserRouter>
+        <TunnelProvider>
+          <BrowserRouter>
+            <AppContainer />
+          </BrowserRouter>
+        </TunnelProvider>
       </MuiThemeProvider>
     </ApolloProvider>,
     document.getElementById('app')

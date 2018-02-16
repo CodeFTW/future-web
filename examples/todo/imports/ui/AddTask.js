@@ -3,6 +3,7 @@ import { Button, TextField } from 'material-ui';
 import { Save } from 'material-ui-icons';
 import { DatePicker } from 'material-ui-pickers';
 import { Error } from './error/error';
+import { updateAppTitle } from './components/uis';
 
 export class AddTask extends React.Component {
   // eslint-disable-next-line no-undef
@@ -79,6 +80,13 @@ export class AddTask extends React.Component {
   render() {
     return (
       <Fragment>
+        {updateAppTitle(
+          this.state.description
+            ? `${this.state._id ? 'Editing' : 'Adding'} the task ${
+                this.state.description
+              }`
+            : 'Add Task'
+        )}
         <form className="form">
           <TextField
             name="description"
