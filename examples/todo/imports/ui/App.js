@@ -1,3 +1,4 @@
+import { TunnelPlaceholder } from 'react-tunnels';
 import React, { Fragment } from 'react';
 import Reboot from 'material-ui/Reboot';
 import AppBar from 'material-ui/AppBar';
@@ -42,7 +43,7 @@ export class App extends React.Component {
                   <MenuIcon />
                 </IconButton>
                 <Typography type="headline" color="inherit">
-                  Meteor React Latest
+                  <TunnelPlaceholder id="app-title" />
                 </Typography>
               </Toolbar>
             </AppBar>
