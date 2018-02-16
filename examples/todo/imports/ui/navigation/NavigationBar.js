@@ -6,11 +6,7 @@ import { Add, ViewList } from 'material-ui-icons';
 import { Paper } from 'material-ui';
 import { Link } from 'react-router-dom';
 
-export const NavigationBarComponent = props => {
-  const { classes, location } = props;
-  const { pathname } = location;
-
-  return (
+export const NavigationBarComponent = ({ classes, location:{ pathname } }) => (
     <Paper elevation={10}>
       <BottomNavigation
         value={pathname === '/' ? 0 : 1}
@@ -32,4 +28,3 @@ export const NavigationBarComponent = props => {
       </BottomNavigation>
     </Paper>
   );
-};
