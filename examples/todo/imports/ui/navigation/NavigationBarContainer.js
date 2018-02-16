@@ -1,7 +1,7 @@
 import { withStyles } from 'material-ui/styles';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { NavigationBarComponent } from './NavigationBar';
+import { NavigationBar } from './NavigationBar';
 
 const styles = {
   root: {
@@ -12,5 +12,5 @@ const styles = {
 };
 
 export const NavigationBarContainer = compose(withStyles(styles), withRouter)(
-  NavigationBarComponent
+  NavigationBar
 );

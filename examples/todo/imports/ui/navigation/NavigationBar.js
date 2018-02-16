@@ -10,7 +10,7 @@ const handleEffectClick = ({ pathname }) =>
   // eslint-disable-next-line no-nested-ternary
   pathname === '/' || pathname === '/add' ? (pathname === '/' ? 0 : 1) : null;
 
-export const NavigationBarComponent = ({ classes, location }) => (
+export const NavigationBar = ({ classes, location }) => (
   <Paper elevation={10}>
     <BottomNavigation
       value={handleEffectClick(location)}
