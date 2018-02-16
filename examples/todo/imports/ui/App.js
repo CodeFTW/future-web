@@ -6,9 +6,9 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import Typography from 'material-ui/Typography';
 import { Menu } from './Menu';
-import { NavigationBar } from './NavigationBar';
 import { Routes } from './Routes';
 import { LoginContainer } from './login/LoginContainer';
+import { NavigationBarContainer } from './navigation/NavigationBarContainer';
 
 export class App extends React.Component {
   // eslint-disable-next-line no-undef
@@ -50,7 +50,7 @@ export class App extends React.Component {
             <div className="content" style={{ marginTop: 60 }}>
               <Routes />
             </div>
-            <NavigationBar />
+            <NavigationBarContainer />
           </Fragment>
         ) : (
           <LoginContainer />

@@ -1,22 +1,12 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
 import BottomNavigation, {
   BottomNavigationAction,
 } from 'material-ui/BottomNavigation';
 import { Add, ViewList } from 'material-ui-icons';
 import { Paper } from 'material-ui';
-import { Link, withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
+import { Link } from 'react-router-dom';
 
-const styles = {
-  root: {
-    width: '100%',
-    position: 'fixed',
-    bottom: 0,
-  },
-};
-
-const NavigationBarComponent = props => {
+export const NavigationBarComponent = props => {
   const { classes, location } = props;
   const { pathname } = location;
 
@@ -43,7 +33,3 @@ const NavigationBarComponent = props => {
     </Paper>
   );
 };
-
-export const NavigationBar = compose(withStyles(styles), withRouter)(
-  NavigationBarComponent
-);
