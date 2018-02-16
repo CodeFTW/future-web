@@ -5,6 +5,7 @@ import { AddTaskContainer } from '../containers/AddTaskContainer';
 
 import { LoginContainer } from './login/LoginContainer';
 import { loggedUserQuery } from '../core/user/userQueries';
+import { ProfileContainer } from './profile/ProfileContainer';
 
 const enhance = loggedUserQuery;
 const PrivateRoute = enhance(
@@ -24,5 +25,6 @@ export const Routes = () => (
     <Route path="/login" component={LoginContainer} />
     <PrivateRoute path="/add" component={AddTaskContainer} />
     <PrivateRoute path="/edit/:_id" component={AddTaskContainer} />
+    <PrivateRoute path="/profile" component={ProfileContainer} />
   </Switch>
 );
