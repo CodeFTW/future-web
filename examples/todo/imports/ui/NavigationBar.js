@@ -5,8 +5,8 @@ import BottomNavigation, {
 } from 'material-ui/BottomNavigation';
 import { Add, ViewList } from 'material-ui-icons';
 import { Paper } from 'material-ui';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Link, withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 const styles = {
   root: {
@@ -16,51 +16,34 @@ const styles = {
   },
 };
 
-class NavigationBarComponent extends React.Component {
-  // eslint-disable-next-line no-undef
-  state = {
-    value: 0,
-  };
+const NavigationBarComponent = props => {
+  const { classes, location } = props;
+  const { pathname } = location;
 
-  // eslint-disable-next-line no-undef
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
-
-  render() {
-    const { classes } = this.props;
-    const { value } = this.state;
-
-    return (
-      <Paper elevation={10}>
-        <BottomNavigation
-          value={value}
-          onChange={this.handleChange}
-          showLabels
-          className={classes.root}
-        >
-          <BottomNavigationAction
-            label="Tasks"
-            icon={<ViewList />}
-            component={Link}
-            to="/"
-          />
-          <BottomNavigationAction
-            label="Add"
-            icon={<Add />}
-            component={Link}
-            to="/add"
-          />
-        </BottomNavigation>
-      </Paper>
-    );
-  }
-}
-
-NavigationBarComponent.contextTypes = {
-  router: PropTypes.shape({
-    history: PropTypes.object.isRequired,
-  }),
+  return (
+    <Paper elevation={10}>
+      <BottomNavigation
+        value={pathname === '/' ? 0 : 1}
+        showLabels
+        className={classes.root}
+      >
+        <BottomNavigationAction
+          label="Tasks"
+          icon={<ViewList />}
+          component={Link}
+          to="/"
+        />
+        <BottomNavigationAction
+          label="Add"
+          icon={<Add />}
+          component={Link}
+          to="/add"
+        />
+      </BottomNavigation>
+    </Paper>
+  );
 };
 
-export const NavigationBar = withStyles(styles)(NavigationBarComponent);
+export const NavigationBar = compose(withStyles(styles), withRouter)(
+  NavigationBarComponent
+);
