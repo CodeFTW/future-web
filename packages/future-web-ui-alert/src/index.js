@@ -1,16 +1,26 @@
 import React from 'react';
 import { Snackbar } from 'material-ui';
 
-export const Alert = ({message}) => {
-  return (
+export class Alert extends React.Component {
+  state = {
+    open: true,
+  };
 
-    <Snackbar
-      message={message}
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'center',
-      }}
-      open={true}
-    />
-  );
-};
+  render() {
+    const { message, autoHideDuration = 3000 } = this.props;
+    const { open } = this.state;
+
+    return (
+      <Snackbar
+        message={message}
+        autoHideDuration={autoHideDuration}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        open={open}
+        onClose={() => this.setState({ open: false })}
+      />
+    );
+  }
+}

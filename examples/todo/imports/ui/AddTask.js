@@ -126,7 +126,7 @@ export class AddTask extends React.Component {
           message="The field Description is required"
           onCallBack={this.callBack}
         />
-        <Alert message="Code"/>
+        <Alert message="Code"  />
       </Fragment>
     );
   }
