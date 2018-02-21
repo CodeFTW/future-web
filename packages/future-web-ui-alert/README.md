@@ -1,49 +1,52 @@
-# Date Time Resolver for GraphQL
+# UI Alert
 
-[![npm version](https://badge.fury.io/js/%40codeftw%2Ffuture-web-graphql-date-time-resolver.svg)](https://badge.fury.io/js/%40codeftw%2Ffuture-web-graphql-date-time-resolver)
+[![npm version](https://badge.fury.io/js/%40codeftw%2Ffuture-web-ui-alert.svg)](https://badge.fury.io/js/%40codeftw%2Ffuture-web-ui-alert)
 
 ## Installation
 
 ```bash
-npm install @codeftw/future-web-graphql-date-time-resolver
+npm install @codeftw/future-web-ui-alert
 ```
 
 ## Usage
 
-- Add scalar DateTime to your Schema
+- Add AlertProvider wrapping your App
 ```javascript
-scalar DateTime
+import { AlertProvider } from '@codeftw/future-web-ui-alert';
 
-type Query {
-  ...
-}
 
-type Mutation {
-  ...
-}
+  render(
+    <ApolloProvider client={client}>
+      <MuiThemeProvider theme={theme}>
+        <TunnelProvider>
+          <AlertProvider>
+            <BrowserRouter>
+              <AppContainer/>
+            </BrowserRouter>
+          </AlertProvider>
+        </TunnelProvider>
+      </MuiThemeProvider>
+    </ApolloProvider>,
+    document.getElementById('app')
+  );
 ```
 
-- Import it in your resolvers and define it
+- Add the Alert component somewhere in your App
 
 ```javascript
-import { resolverDateTime } from '@codeftw/future-web-graphql-date-time-resolver';
+import { Alert } from '@codeftw/future-web-ui-alert';
 
-export const resolvers = {
-  Query: {
-    ...
-  },
-  Mutation: {
-    ...
-  },
-  DateTime: resolverDateTime,
-};
+<Alert />
 ```
 
-- Use it in your types, queries, mutations
+- Use our HOC withAlert to have access to showAlert function
 
 ```javascript
-type Person {
-  name: String
-  birthday: DateTime
-}
+import { withAlert } from '@codeftw/future-web-ui-alert';
+
+const AddTask = withAlert(({showAlert}) => {
+   ...
+   showAlert('Task added');
+   ...
+});
 ```
