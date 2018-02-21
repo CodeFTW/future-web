@@ -13,6 +13,10 @@ Maybe in the future we have a simple skeleton here that depends on external pack
 
 To have a path to follow we choose to build a TODO App as a working sample [/examples/todo](https://github.com/CodeFTW/future-web/tree/master/examples/todo), we know, there are a lot of them out there, it is just to practice and learn.
 
+# Packages
+- [future-web-graphql-date-time-resolver](https://github.com/CodeFTW/future-web/tree/master/packages/future-web-graphql-date-time-resolver): GraphQL scalar resolver for date time
+- [future-web-ui-alert](https://github.com/CodeFTW/future-web/tree/master/packages/future-web-ui-alert): alert support with Material UI
+
 # Who are we?
 A group of people who believes that code can change people's lives for better. We are CodeFTW! [Learn more](http://codeftw.com/index-en.html) and join us on [Slack](https://slackincodeftw.herokuapp.com/)
 
