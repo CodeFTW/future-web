@@ -3,9 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Alert = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.Alert = exports.showMessage = undefined;
 
 var _react = require('react');
 
@@ -13,59 +11,57 @@ var _react2 = _interopRequireDefault(_react);
 
 var _materialUi = require('material-ui');
 
+var _jsCookie = require('js-cookie');
+
+var _jsCookie2 = _interopRequireDefault(_jsCookie);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+var showMessage = exports.showMessage = function showMessage(message, _ref) {
+  var setShowAlert = _ref.setShowAlert;
 
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+  console.log('show');
+  _jsCookie2.default.set('message', message);
+  setShowAlert(true);
+};
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+var getMessage = function getMessage() {
+  console.log('get');
+  return _jsCookie2.default.get('message');
+};
 
-var Alert = exports.Alert = function (_React$Component) {
-  _inherits(Alert, _React$Component);
+var closer = function closer(_ref2) {
+  var setShowAlert = _ref2.setShowAlert;
+  return function () {
+    console.log('closer');
+    _jsCookie2.default.remove('message');
+    setShowAlert(false);
+  };
+};
 
-  function Alert() {
-    var _ref;
+var Alert = exports.Alert = function Alert(props) {
+  console.log(props);
+  var _props$autoHideDurati = props.autoHideDuration,
+      autoHideDuration = _props$autoHideDurati === undefined ? 3000 : _props$autoHideDurati,
+      showAlert = props.showAlert;
 
-    var _temp, _this, _ret;
+  var message = getMessage();
+  var hasMessage = !!message;
 
-    _classCallCheck(this, Alert);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Alert.__proto__ || Object.getPrototypeOf(Alert)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      open: true
-    }, _temp), _possibleConstructorReturn(_this, _ret);
+  if (!hasMessage) {
+    return null;
   }
 
-  _createClass(Alert, [{
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
+  console.log({ hasMessage: hasMessage });
 
-      var _props = this.props,
-          message = _props.message,
-          _props$autoHideDurati = _props.autoHideDuration,
-          autoHideDuration = _props$autoHideDurati === undefined ? 3000 : _props$autoHideDurati;
-      var open = this.state.open;
-
-
-      return _react2.default.createElement(_materialUi.Snackbar, {
-        message: message,
-        autoHideDuration: autoHideDuration,
-        anchorOrigin: {
-          vertical: 'bottom',
-          horizontal: 'center'
-        },
-        open: open,
-        onClose: function onClose() {
-          return _this2.setState({ open: false });
-        }
-      });
-    }
-  }]);
-
-  return Alert;
-}(_react2.default.Component);
+  return _react2.default.createElement(_materialUi.Snackbar, {
+    message: message,
+    autoHideDuration: autoHideDuration,
+    anchorOrigin: {
+      vertical: 'bottom',
+      horizontal: 'center'
+    },
+    open: showAlert,
+    onClose: closer(props)
+  });
+};

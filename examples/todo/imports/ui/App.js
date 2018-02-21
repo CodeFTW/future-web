@@ -10,53 +10,49 @@ import { Menu } from './Menu';
 import { Routes } from './Routes';
 import { LoginContainer } from './login/LoginContainer';
 import { NavigationBarContainer } from './navigation/NavigationBarContainer';
+import { Alert } from '@codeftw/future-web-ui-alert';
 
-export class App extends React.Component {
-  // eslint-disable-next-line no-undef
-  state = { open: false };
+const toggleMenu = ({ appState, setAppState }) => () => {
+  setAppState({ ...appState, open: !appState.open });
+};
 
-  // eslint-disable-next-line no-undef
-  toggleMenu = () => {
-    event.preventDefault();
-    this.setState({ open: !this.state.open });
-  };
+const closeMenu = ({ appState, setAppState }) => () => {
+  setAppState({ ...appState, open: false });
+};
 
-  // eslint-disable-next-line no-undef
-  closeMenu = () => {
-    event.preventDefault();
-    this.setState({ open: false });
-  };
+export const App = props => {
+  const { appState, setShowAlert } = props;
 
-  render() {
-    return (
-      <div className="app">
-        {this.props.data.loggedUser ? (
-          <Fragment>
-            <Reboot />
-            <AppBar>
-              <Toolbar>
-                <IconButton
-                  color="secondary"
-                  aria-label="Menu"
-                  onClick={this.toggleMenu}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Typography type="headline" color="inherit">
-                  <TunnelPlaceholder id="app-title" />
-                </Typography>
-              </Toolbar>
-            </AppBar>
-            <Menu open={this.state.open} onSelectMenu={this.closeMenu} />
-            <div className="content" style={{ marginTop: 60 }}>
-              <Routes />
-            </div>
-            <NavigationBarContainer />
-          </Fragment>
-        ) : (
-          <LoginContainer />
-        )}
-      </div>
-    );
-  }
-}
+  console.log('app');
+  return (
+    <div className="app">
+      <Alert showAlert={appState.showAlert} setShowAlert={setShowAlert}/>
+      {props.data.loggedUser ? (
+        <Fragment>
+          <Reboot/>
+          <AppBar>
+            <Toolbar>
+              <IconButton
+                color="secondary"
+                aria-label="Menu"
+                onClick={toggleMenu(props)}
+              >
+                <MenuIcon/>
+              </IconButton>
+              <Typography type="headline" color="inherit">
+                <TunnelPlaceholder id="app-title"/>
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Menu open={appState.open} onSelectMenu={closeMenu(props)}/>
+          <div className="content" style={{ marginTop: 60 }}>
+            <Routes/>
+          </div>
+          <NavigationBarContainer/>
+        </Fragment>
+      ) : (
+        <LoginContainer/>
+      )}
+    </div>
+  );
+};
