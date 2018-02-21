@@ -1,35 +1,38 @@
 import React from 'react';
 import { Snackbar } from 'material-ui';
+import PropTypes from 'prop-types';
+import { withContext, withState, compose, getContext } from 'recompose';
 import Cookies from 'js-cookie';
 
-export const showMessage = (message, { setShowAlert }) => {
-  console.log('show');
-  Cookies.set('message', message);
+const COOKIE_KEY_MESSAGE = 'future-web-ui-alert-message';
+
+export const showAlert = (message, { setShowAlert }) => {
+  Cookies.set(COOKIE_KEY_MESSAGE, message);
   setShowAlert(true);
 };
 
 const getMessage = () => {
-  console.log('get');
-  return Cookies.get('message');
+  return Cookies.get(COOKIE_KEY_MESSAGE);
 };
 
 const closer = ({ setShowAlert }) => () => {
-  console.log('closer');
-  Cookies.remove('message');
+  Cookies.remove(COOKIE_KEY_MESSAGE);
   setShowAlert(false);
 };
 
-export const Alert = props => {
-  console.log(props);
-  const { autoHideDuration = 3000, showAlert } = props;
+export const withAlert = getContext({
+  setShowAlert: PropTypes.func,
+  openAlert: PropTypes.bool,
+});
+
+export const Alert = withAlert((props) => {
+  const { autoHideDuration = 3000, openAlert } = props;
   const message = getMessage();
   const hasMessage = !!message;
 
   if (!hasMessage) {
     return null;
   }
-
-  console.log({ hasMessage });
 
   return (
     <Snackbar
@@ -39,8 +42,29 @@ export const Alert = props => {
         vertical: 'bottom',
         horizontal: 'center',
       }}
-      open={showAlert}
+      open={openAlert}
       onClose={closer(props)}
     />
   );
-};
+});
+
+const enhance = compose(
+  withState('alertState', 'setAlertState', { openAlert: false }),
+  withContext(
+    {
+      openAlert: PropTypes.bool,
+      setShowAlert: PropTypes.func,
+    },
+    ({ alertState, setAlertState }) => ({
+      openAlert: alertState.openAlert,
+      setShowAlert: (openAlert) => {
+        setAlertState({ ...alertState, openAlert });
+      },
+    })
+  ),
+);
+
+export const AlertProvider = enhance((props) => {
+  return props.children;
+});
+

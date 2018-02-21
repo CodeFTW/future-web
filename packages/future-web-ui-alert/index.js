@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Alert = exports.showMessage = undefined;
+exports.AlertProvider = exports.Alert = exports.withAlert = exports.showAlert = undefined;
 
 var _react = require('react');
 
@@ -11,39 +11,48 @@ var _react2 = _interopRequireDefault(_react);
 
 var _materialUi = require('material-ui');
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _recompose = require('recompose');
+
 var _jsCookie = require('js-cookie');
 
 var _jsCookie2 = _interopRequireDefault(_jsCookie);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var showMessage = exports.showMessage = function showMessage(message, _ref) {
+var COOKIE_KEY_MESSAGE = 'future-web-ui-alert-message';
+
+var showAlert = exports.showAlert = function showAlert(message, _ref) {
   var setShowAlert = _ref.setShowAlert;
 
-  console.log('show');
-  _jsCookie2.default.set('message', message);
+  _jsCookie2.default.set(COOKIE_KEY_MESSAGE, message);
   setShowAlert(true);
 };
 
 var getMessage = function getMessage() {
-  console.log('get');
-  return _jsCookie2.default.get('message');
+  return _jsCookie2.default.get(COOKIE_KEY_MESSAGE);
 };
 
 var closer = function closer(_ref2) {
   var setShowAlert = _ref2.setShowAlert;
   return function () {
-    console.log('closer');
-    _jsCookie2.default.remove('message');
+    _jsCookie2.default.remove(COOKIE_KEY_MESSAGE);
     setShowAlert(false);
   };
 };
 
-var Alert = exports.Alert = function Alert(props) {
-  console.log(props);
+var withAlert = exports.withAlert = (0, _recompose.getContext)({
+  setShowAlert: _propTypes2.default.func,
+  openAlert: _propTypes2.default.bool
+});
+
+var Alert = exports.Alert = withAlert(function (props) {
   var _props$autoHideDurati = props.autoHideDuration,
       autoHideDuration = _props$autoHideDurati === undefined ? 3000 : _props$autoHideDurati,
-      showAlert = props.showAlert;
+      openAlert = props.openAlert;
 
   var message = getMessage();
   var hasMessage = !!message;
@@ -52,8 +61,6 @@ var Alert = exports.Alert = function Alert(props) {
     return null;
   }
 
-  console.log({ hasMessage: hasMessage });
-
   return _react2.default.createElement(_materialUi.Snackbar, {
     message: message,
     autoHideDuration: autoHideDuration,
@@ -61,7 +68,25 @@ var Alert = exports.Alert = function Alert(props) {
       vertical: 'bottom',
       horizontal: 'center'
     },
-    open: showAlert,
+    open: openAlert,
     onClose: closer(props)
   });
-};
+});
+
+var enhance = (0, _recompose.compose)((0, _recompose.withState)('alertState', 'setAlertState', { openAlert: false }), (0, _recompose.withContext)({
+  openAlert: _propTypes2.default.bool,
+  setShowAlert: _propTypes2.default.func
+}, function (_ref3) {
+  var alertState = _ref3.alertState,
+      setAlertState = _ref3.setAlertState;
+  return {
+    openAlert: alertState.openAlert,
+    setShowAlert: function setShowAlert(openAlert) {
+      setAlertState({ ...alertState, openAlert: openAlert });
+    }
+  };
+}));
+
+var AlertProvider = exports.AlertProvider = enhance(function (props) {
+  return props.children;
+});

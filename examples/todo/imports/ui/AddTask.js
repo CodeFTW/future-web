@@ -4,7 +4,7 @@ import { Save } from 'material-ui-icons';
 import { DatePicker } from 'material-ui-pickers';
 import { Error } from './error/error';
 import { updateAppTitle } from './components/uis';
-import { showMessage } from '@codeftw/future-web-ui-alert';
+import { showAlert } from '@codeftw/future-web-ui-alert';
 
 export class AddTask extends React.Component {
   // eslint-disable-next-line no-undef
@@ -60,7 +60,7 @@ export class AddTask extends React.Component {
           // TODO when we have the cache working correctly after an update we can remove this
           // https://github.com/CodeFTW/meteor-react-latest/issues/34
           client.resetStore();
-          showMessage("Task added", this.props);
+          showAlert("Task added", this.props);
           history.push('/');
         })
         .catch(error => {

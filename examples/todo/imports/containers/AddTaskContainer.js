@@ -1,9 +1,9 @@
 import { graphql, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
-import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { compose, getContext } from 'recompose';
 import { AddTask } from '../ui/AddTask';
+import { withAlert } from '@codeftw/future-web-ui-alert';
 
 export const addTaskMutation = graphql(
   gql`
@@ -41,7 +41,5 @@ export const AddTaskContainer = compose(
   data,
   withRouter,
   withApollo,
-  getContext({
-    setShowAlert: PropTypes.func,
-  })
+  withAlert
 )(AddTask);

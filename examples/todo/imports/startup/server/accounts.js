@@ -10,6 +10,7 @@ Meteor.startup(function() {
     {
       $set: {
         appId: Meteor.settings.public.FACEBOOK_APP_ID,
+
         secret: Meteor.settings.FACEBOOK_SECRET_KEY,
       },
     }

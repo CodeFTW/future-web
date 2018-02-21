@@ -21,12 +21,12 @@ const closeMenu = ({ appState, setAppState }) => () => {
 };
 
 export const App = props => {
-  const { appState, setShowAlert } = props;
+  const { appState } = props;
 
   console.log('app');
   return (
     <div className="app">
-      <Alert showAlert={appState.showAlert} setShowAlert={setShowAlert}/>
+      <Alert />
       {props.data.loggedUser ? (
         <Fragment>
           <Reboot/>

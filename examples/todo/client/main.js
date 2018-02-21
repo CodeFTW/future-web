@@ -9,6 +9,7 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { DDPLink } from 'meteor/swydo:ddp-apollo';
 import { AppContainer } from '../imports/containers/AppContainer';
+import { AlertProvider } from '@codeftw/future-web-ui-alert';
 
 const theme = createMuiTheme();
 
@@ -22,9 +23,11 @@ Meteor.startup(() => {
     <ApolloProvider client={client}>
       <MuiThemeProvider theme={theme}>
         <TunnelProvider>
-          <BrowserRouter>
-            <AppContainer />
-          </BrowserRouter>
+          <AlertProvider>
+            <BrowserRouter>
+              <AppContainer/>
+            </BrowserRouter>
+          </AlertProvider>
         </TunnelProvider>
       </MuiThemeProvider>
     </ApolloProvider>,
