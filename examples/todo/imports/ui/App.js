@@ -23,7 +23,6 @@ const closeMenu = ({ appState, setAppState }) => () => {
 export const App = props => {
   const { appState } = props;
 
-  console.log('app');
   return (
     <div className="app">
       <Alert />

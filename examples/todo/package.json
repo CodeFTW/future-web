@@ -11,6 +11,7 @@
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.39",
     "@codeftw/future-web-graphql-date-time-resolver": "^1.0.5",
+    "@codeftw/future-web-ui-alert": "^1.0.2",
     "apollo-cache-inmemory": "^1.1.5",
     "apollo-client": "^2.2.0",
     "apollo-link": "^1.0.7",
