@@ -1,10 +1,9 @@
 import React, { Fragment } from 'react';
+import { showAlert } from '@codeftw/future-web-ui-alert';
 import { Button, TextField } from 'material-ui';
 import { Save } from 'material-ui-icons';
 import { DatePicker } from 'material-ui-pickers';
-import { Error } from './error/error';
 import { updateAppTitle } from './components/uis';
-import { showAlert } from '@codeftw/future-web-ui-alert';
 
 export class AddTask extends React.Component {
   // eslint-disable-next-line no-undef
@@ -13,7 +12,6 @@ export class AddTask extends React.Component {
     details: '',
     done: false,
     dueDate: new Date(),
-    error: false,
   };
 
   componentWillReceiveProps(nextProps) {
@@ -60,7 +58,7 @@ export class AddTask extends React.Component {
           // TODO when we have the cache working correctly after an update we can remove this
           // https://github.com/CodeFTW/meteor-react-latest/issues/34
           client.resetStore();
-          showAlert("Task added", this.props);
+          showAlert('Task added', this.props);
           history.push('/');
         })
         .catch(error => {
@@ -68,15 +66,8 @@ export class AddTask extends React.Component {
           console.log(error);
         });
     } else {
-      this.setState({ error: true });
+      showAlert('The field Description is required', this.props);
     }
-  };
-
-  // eslint-disable-next-line no-undef
-  callBack = () => {
-    this.setState({
-      error: false,
-    });
   };
 
   render() {
@@ -121,11 +112,6 @@ export class AddTask extends React.Component {
             <Save />
           </Button>
         </form>
-        <Error
-          error={this.state.error}
-          message="The field Description is required"
-          onCallBack={this.callBack}
-        />
       </Fragment>
     );
   }

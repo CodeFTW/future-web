@@ -6,11 +6,12 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import Typography from 'material-ui/Typography';
+import { Alert } from '@codeftw/future-web-ui-alert';
+
 import { Menu } from './Menu';
 import { Routes } from './Routes';
 import { LoginContainer } from './login/LoginContainer';
 import { NavigationBarContainer } from './navigation/NavigationBarContainer';
-import { Alert } from '@codeftw/future-web-ui-alert';
 
 const toggleMenu = ({ appState, setAppState }) => () => {
   setAppState({ ...appState, open: !appState.open });
@@ -28,7 +29,7 @@ export const App = props => {
       <Alert />
       {props.data.loggedUser ? (
         <Fragment>
-          <Reboot/>
+          <Reboot />
           <AppBar>
             <Toolbar>
               <IconButton
@@ -36,21 +37,21 @@ export const App = props => {
                 aria-label="Menu"
                 onClick={toggleMenu(props)}
               >
-                <MenuIcon/>
+                <MenuIcon />
               </IconButton>
               <Typography type="headline" color="inherit">
-                <TunnelPlaceholder id="app-title"/>
+                <TunnelPlaceholder id="app-title" />
               </Typography>
             </Toolbar>
           </AppBar>
-          <Menu open={appState.open} onSelectMenu={closeMenu(props)}/>
+          <Menu open={appState.open} onSelectMenu={closeMenu(props)} />
           <div className="content" style={{ marginTop: 60 }}>
-            <Routes/>
+            <Routes />
           </div>
-          <NavigationBarContainer/>
+          <NavigationBarContainer />
         </Fragment>
       ) : (
-        <LoginContainer/>
+        <LoginContainer />
       )}
     </div>
   );

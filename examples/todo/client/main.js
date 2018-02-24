@@ -1,4 +1,5 @@
 import React from 'react';
+import { AlertProvider } from '@codeftw/future-web-ui-alert';
 import { TunnelProvider } from 'react-tunnels';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
@@ -9,7 +10,6 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { DDPLink } from 'meteor/swydo:ddp-apollo';
 import { AppContainer } from '../imports/containers/AppContainer';
-import { AlertProvider } from '@codeftw/future-web-ui-alert';
 
 const theme = createMuiTheme();
 
@@ -25,7 +25,7 @@ Meteor.startup(() => {
         <TunnelProvider>
           <AlertProvider>
             <BrowserRouter>
-              <AppContainer/>
+              <AppContainer />
             </BrowserRouter>
           </AlertProvider>
         </TunnelProvider>

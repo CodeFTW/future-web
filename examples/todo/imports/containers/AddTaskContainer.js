@@ -1,9 +1,10 @@
 import { graphql, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter } from 'react-router-dom';
-import { compose, getContext } from 'recompose';
-import { AddTask } from '../ui/AddTask';
+import { compose } from 'recompose';
 import { withAlert } from '@codeftw/future-web-ui-alert';
+
+import { AddTask } from '../ui/AddTask';
 
 export const addTaskMutation = graphql(
   gql`
