@@ -1,7 +1,8 @@
 import { compose, withApollo } from 'react-apollo';
+import { withAlert } from '@codeftw/future-web-ui-alert';
+
 import { Login } from './Login';
 import { loggedUserQuery } from '../../core/user/userQueries';
-import { withAlert } from '@codeftw/future-web-ui-alert';
 
 const data = loggedUserQuery;
 

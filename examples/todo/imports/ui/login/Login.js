@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { Button, TextField, Paper } from 'material-ui';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-import { Error } from '../error/error';
 import { showAlert } from '@codeftw/future-web-ui-alert';
 
 const loginFacebook = () => {
@@ -33,9 +32,9 @@ export class Login extends React.Component {
         if (error) {
           this.setState({ error: true });
           if (error.error === 403) {
-            showAlert("The email or password is wrong", this.props);
+            showAlert('The email or password is wrong', this.props);
           } else {
-            showAlert("No data was entered", this.props);
+            showAlert('No data was entered', this.props);
           }
         } else {
           this.props.client.resetStore();
@@ -139,7 +138,7 @@ export class Login extends React.Component {
           fullWidth
         >
           Login com Facebook
-        </Button>      
+        </Button>
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react';
+import { showAlert } from '@codeftw/future-web-ui-alert';
 import { Button, TextField } from 'material-ui';
 import { Save } from 'material-ui-icons';
 import { DatePicker } from 'material-ui-pickers';
 import { updateAppTitle } from './components/uis';
-import { showAlert } from '@codeftw/future-web-ui-alert';
 
 export class AddTask extends React.Component {
   // eslint-disable-next-line no-undef
@@ -11,7 +11,7 @@ export class AddTask extends React.Component {
     description: '',
     details: '',
     done: false,
-    dueDate: new Date(),    
+    dueDate: new Date(),
   };
 
   componentWillReceiveProps(nextProps) {
@@ -58,7 +58,7 @@ export class AddTask extends React.Component {
           // TODO when we have the cache working correctly after an update we can remove this
           // https://github.com/CodeFTW/meteor-react-latest/issues/34
           client.resetStore();
-          showAlert("Task added", this.props);
+          showAlert('Task added', this.props);
           history.push('/');
         })
         .catch(error => {
@@ -66,7 +66,7 @@ export class AddTask extends React.Component {
           console.log(error);
         });
     } else {
-      showAlert("The field Description is required", this.props);
+      showAlert('The field Description is required', this.props);
     }
   };
 
