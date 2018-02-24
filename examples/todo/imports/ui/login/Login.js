@@ -4,6 +4,7 @@ import { Button, TextField, Paper } from 'material-ui';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Error } from '../error/error';
+import { showAlert } from '@codeftw/future-web-ui-alert';
 
 const loginFacebook = () => {
   Meteor.loginWithFacebook({
@@ -19,8 +20,6 @@ export class Login extends React.Component {
     passwordLogin: '',
     emailSubscribe: '',
     passwordSubscribe: '',
-    error: false,
-    messageError: '',
   };
 
   // eslint-disable-next-line no-undef
@@ -34,13 +33,9 @@ export class Login extends React.Component {
         if (error) {
           this.setState({ error: true });
           if (error.error === 403) {
-            this.setState({
-              messageError: 'The email or password is wrong',
-            });
+            showAlert("The email or password is wrong", this.props);
           } else {
-            this.setState({
-              messageError: 'No data was entered',
-            });
+            showAlert("No data was entered", this.props);
           }
         } else {
           this.props.client.resetStore();
@@ -59,10 +54,7 @@ export class Login extends React.Component {
       },
       error => {
         if (error) {
-          this.setState({
-            error: true,
-            messageError: error.reason,
-          });
+          showAlert(error.reason, this.props);
         } else {
           this.props.client.resetStore();
         }
@@ -73,13 +65,6 @@ export class Login extends React.Component {
   // eslint-disable-next-line no-undef
   handleInput = ({ target: { name, value } }) =>
     this.setState({ [name]: value });
-
-  // eslint-disable-next-line no-undef
-  callBack = () => {
-    this.setState({
-      error: false,
-    });
-  };
 
   render() {
     const { data: { loggedUser } } = this.props;
@@ -154,12 +139,7 @@ export class Login extends React.Component {
           fullWidth
         >
           Login com Facebook
-        </Button>
-        <Error
-          error={this.state.error}
-          message={this.state.messageError}
-          onCallBack={this.callBack}
-        />
+        </Button>      
       </div>
     );
   }
