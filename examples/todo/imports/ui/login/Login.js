@@ -24,6 +24,12 @@ export class Login extends React.Component {
   // eslint-disable-next-line no-undef
   onSubmitLoginWithEmail = e => {
     e.preventDefault();
+
+    if( !this.state.emailLogin && !this.state.passwordLogin )  {
+      showAlert('No data was entered', this.props);
+      return;
+    }
+
     Meteor.loginWithPassword(
       this.state.emailLogin,
       this.state.passwordLogin,
@@ -33,8 +39,6 @@ export class Login extends React.Component {
           this.setState({ error: true });
           if (error.error === 403) {
             showAlert('The email or password is wrong', this.props);
-          } else {
-            showAlert('No data was entered', this.props);
           }
         } else {
           this.props.client.resetStore();
