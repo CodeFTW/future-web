@@ -61,7 +61,7 @@ export class Login extends React.Component {
         if (error) {
           this.setState({
             error: true,
-            messageError: 'No data was entered',
+            messageError: error.reason,
           });
         } else {
           this.props.client.resetStore();
