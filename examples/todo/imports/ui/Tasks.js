@@ -16,8 +16,8 @@ class TasksComponent extends React.Component {
     this.setState({ [name]: value.toLowerCase() });
 
   // eslint-disable-next-line no-undef
-  handleRemoveTasksChecked = ({ removeTasksChecked, client }) => () => {
-    removeTasksChecked().then(() => {
+  handleRemoveCheckedTasks = ({ removeCheckedTasks, client }) => () => {
+    removeCheckedTasks().then(() => {
       client.resetStore();
     });
   };
@@ -67,7 +67,7 @@ class TasksComponent extends React.Component {
           <Button
             className="form-action"
             color="primary"
-            onClick={this.handleRemoveTasksChecked({ ...this.props })}
+            onClick={this.handleRemoveCheckedTasks({ ...this.props })}
           >
             Delete all tasks checked
           </Button>

@@ -12,10 +12,7 @@ Meteor.startup(() => {
       );
     });
     window.addEventListener('offline', function() {
-      render(
-        <ConnectionStatus offline />,
-        document.getElementById('offline')
-      );
+      render(<ConnectionStatus offline />, document.getElementById('offline'));
     });
   });
 });
