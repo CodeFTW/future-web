@@ -12,7 +12,6 @@ import { Menu } from './Menu';
 import { Routes } from './Routes';
 import { LoginContainer } from './login/LoginContainer';
 import { NavigationBarContainer } from './navigation/NavigationBarContainer';
-import { ConnectionStatus } from './components/ConnectionStatus';
 
 const toggleMenu = ({ appState, setAppState }) => () => {
   setAppState({ ...appState, open: !appState.open });
