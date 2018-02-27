@@ -12,6 +12,7 @@ import { Menu } from './Menu';
 import { Routes } from './Routes';
 import { LoginContainer } from './login/LoginContainer';
 import { NavigationBarContainer } from './navigation/NavigationBarContainer';
+import { ConnectionStatus } from './components/ConnectionStatus';
 
 const toggleMenu = ({ appState, setAppState }) => () => {
   setAppState({ ...appState, open: !appState.open });
@@ -27,6 +28,7 @@ export const App = props => {
   return (
     <div className="app">
       <Alert />
+
       {props.data.loggedUser ? (
         <Fragment>
           <Reboot />
@@ -42,6 +44,7 @@ export const App = props => {
               <Typography type="headline" color="inherit">
                 <TunnelPlaceholder id="app-title" />
               </Typography>
+              <ConnectionStatus  />              
             </Toolbar>
           </AppBar>
           <Menu open={appState.open} onSelectMenu={closeMenu(props)} />
