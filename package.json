@@ -1,8 +1,5 @@
 {
 	"devDependencies": {
 		"lerna": "^2.8.0"
-	},
-	"dependencies": {
-		"@codeftw/future-web-ui-alert": "^1.0.2"
 	}
 }
