@@ -44,7 +44,7 @@ export const App = props => {
               <Typography type="headline" color="inherit">
                 <TunnelPlaceholder id="app-title" />
               </Typography>
-              <ConnectionStatus  />              
+              <ConnectionStatus />
             </Toolbar>
           </AppBar>
           <Menu open={appState.open} onSelectMenu={closeMenu(props)} />

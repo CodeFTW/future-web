@@ -94,3 +94,10 @@ body {
   overflow-y: auto;
   height: 63vh;
 }
+
+.offline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}

@@ -25,7 +25,7 @@ export class Login extends React.Component {
   onSubmitLoginWithEmail = e => {
     e.preventDefault();
 
-    if( !this.state.emailLogin && !this.state.passwordLogin )  {
+    if (!this.state.emailLogin && !this.state.passwordLogin) {
       showAlert('No data was entered', this.props);
       return;
     }

@@ -10,6 +10,7 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { DDPLink } from 'meteor/swydo:ddp-apollo';
 import { AppContainer } from '../imports/containers/AppContainer';
+import '../imports/startup/client/';
 
 const theme = createMuiTheme();
 
