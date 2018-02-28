@@ -8,7 +8,7 @@ import MenuIcon from 'material-ui-icons/Menu';
 import Typography from 'material-ui/Typography';
 import { Alert } from '@codeftw/future-web-ui-alert';
 
-import { Menu } from './Menu';
+import { MenuContainer } from './menu/MenuContainer';
 import { Routes } from './Routes';
 import { LoginContainer } from './login/LoginContainer';
 import { NavigationBarContainer } from './navigation/NavigationBarContainer';
@@ -45,7 +45,7 @@ export const App = props => {
               </Typography>
             </Toolbar>
           </AppBar>
-          <Menu open={appState.open} onSelectMenu={closeMenu(props)} />
+          <MenuContainer open={appState.open} onSelectMenu={closeMenu(props)} />
           <div className="content" style={{ marginTop: 60 }}>
             <Routes />
           </div>

@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^3.0.0",
-    "eslint-config-tecsinapse-js": "^1.0.5",
+    "eslint-config-tecsinapse-js": "^1.0.6",
     "prettier-eslint": "^8.8.1"
   },
   "eslintConfig": {
