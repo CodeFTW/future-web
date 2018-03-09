@@ -1,6 +1,6 @@
 # Future Web
 
-[![CircleCI](https://circleci.com/gh/CodeFTW/future-web.svg?style=svg)](https://circleci.com/gh/CodeFTW/future-web)
+[![CircleCI](https://circleci.com/gh/CodeFTW/future-web.svg?style=svg&circle-token=47abf6a84069928992796894ca88c3b9e233e692)](https://circleci.com/gh/CodeFTW/future-web)
 
 Start kit repository using:
 - Meteor (build tool, backend/frontend setup)
