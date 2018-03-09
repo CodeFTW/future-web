@@ -1,5 +1,7 @@
 # Future Web
 
+[![CircleCI](https://circleci.com/gh/CodeFTW/future-web.svg?style=svg)](https://circleci.com/gh/CodeFTW/future-web)
+
 Start kit repository using:
 - Meteor (build tool, backend/frontend setup)
 - GraphQL with Apollo (apollo server and apollo react client)
