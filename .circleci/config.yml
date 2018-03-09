@@ -14,7 +14,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: cd examples/todo
+          name: go to examples/todo
+          command: cd examples/todo
       - restore_cache:
           key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum ".circleci/config.yml" }}
       - restore_cache:
