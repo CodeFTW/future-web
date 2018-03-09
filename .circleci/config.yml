@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: examples/todo
+    working_directory: ~/future-web/examples/todo
     docker:
       - image: circleci/openjdk:8-jdk-browsers
         environment:
@@ -11,7 +11,8 @@ jobs:
           LC_ALL: C.UTF-8
           LC_NUMERIC: en_US.UTF-8
     steps:
-      - checkout
+      - checkout:
+          path: ~/future-web
       - run:
           name: install Meteor
           command: |
