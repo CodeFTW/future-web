@@ -81,9 +81,13 @@ jobs:
   build_todo:
     working_directory: ~/future-web/examples/todo
     <<: *METEOR_BUILD
+  build_second_repo:
+    working_directory: ~/future-web/examples/second-repo
+    <<: *METEOR_BUILD
 
 workflows:
   version: 2
   build:
     jobs:
       - build_todo
+      - build_second_repo
