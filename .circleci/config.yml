@@ -1,7 +1,6 @@
 version: 2
 jobs:
-  build:
-    working_directory: ~/future-web/examples/todo
+  setup_meteor:
     docker:
       - image: circleci/openjdk:8-jdk-browsers
         environment:
@@ -14,6 +13,8 @@ jobs:
           METEOR_BIN_TMP_FILE: meteor-bin-temp
     steps:
       - checkout
+      - run:
+          name: cd examples/todo
       - restore_cache:
           key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum ".circleci/config.yml" }}
       - restore_cache:
