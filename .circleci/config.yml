@@ -79,5 +79,6 @@ jobs:
             - ~/.npm/
 workflows:
   version: 2
-  jobs:
-    - build_todo
+  build:
+    jobs:
+      - build_todo
