@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  setup_meteor:
+  build:
     docker:
       - image: circleci/openjdk:8-jdk-browsers
         environment:
