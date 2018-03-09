@@ -14,13 +14,13 @@ jobs:
       - checkout:
           path: ~/future-web
       - restore_cache:
-          key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum "~/.circleci/config.yml" }}
+          key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum "~/future-web/.circleci/config.yml" }}
       - restore_cache:
-          key: meteor-release-{{ checksum ".meteor/release" }}-{{ checksum "~/.circleci/config.yml" }}
+          key: meteor-release-{{ checksum ".meteor/release" }}-{{ checksum "~/future-web/.circleci/config.yml" }}
       - restore_cache:
-          key: meteor-packages-{{ checksum ".meteor/versions" }}-{{ checksum "~/.circleci/config.yml" }}
+          key: meteor-packages-{{ checksum ".meteor/versions" }}-{{ checksum "~/future-web/.circleci/config.yml" }}
       - restore_cache:
-          key: npm-packages-{{ checksum "package.json" }}-{{ checksum "~/.circleci/config.yml" }}
+          key: npm-packages-{{ checksum "package.json" }}-{{ checksum "~/future-web/.circleci/config.yml" }}
       - run:
           name: restore cached meteor bin
           command: |
@@ -61,19 +61,19 @@ jobs:
             mkdir -p ~/build-temp
             cp /usr/local/bin/meteor ~/build-temp/meteor-bin
       - save_cache:
-          key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum "~/.circleci/config.yml" }}
+          key: build-temp-{{ checksum ".meteor/release" }}-{{ checksum "~/future-web/.circleci/config.yml" }}
           paths:
             - ~/build-temp
       - save_cache:
-          key: meteor-release-{{ checksum ".meteor/release" }}-{{ checksum "~/.circleci/config.yml" }}
+          key: meteor-release-{{ checksum ".meteor/release" }}-{{ checksum "~/future-web/.circleci/config.yml" }}
           paths:
             - ~/.meteor
       - save_cache:
-          key: meteor-packages-{{ checksum ".meteor/versions" }}-{{ checksum "~/.circleci/config.yml" }}
+          key: meteor-packages-{{ checksum ".meteor/versions" }}-{{ checksum "~/future-web/.circleci/config.yml" }}
           paths:
             - .meteor/
       - save_cache:
-          key: npm-packages-{{ checksum "package.json" }}-{{ checksum "~/.circleci/config.yml" }}
+          key: npm-packages-{{ checksum "package.json" }}-{{ checksum "~/future-web/.circleci/config.yml" }}
           paths:
             - ./node_modules/
             - ~/.npm/
