@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/examples/todo
+    working_directory: ~/future-web/examples/todo
     docker:
       - image: circleci/openjdk:8-jdk-browsers
         environment:
