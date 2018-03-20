@@ -1,4 +1,3 @@
-import { Meteor } from 'meteor/meteor';
 import React, { Fragment } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
@@ -23,39 +22,18 @@ class TasksComponent extends React.Component {
   };
 
   render() {
-    const {
-      data: { loading, tasks },
-      loggedUser,
-      history,
-      client,
-    } = this.props;
+    const { data: { loading, tasks } } = this.props;
     if (loading) {
       return <div>loading...</div>;
     }
 
-    const logoutButton = loggedUser ? (
-      <Button
-        className="form-action"
-        raised
-        color="primary"
-        onClick={() =>
-          Meteor.logout(() => {
-            client.resetStore().then(() => history.push('/login'));
-          })
-        }
-      >
-        Logout
-      </Button>
-    ) : null;
-
     if (tasks.length === 0) {
-      return <div>{logoutButton} no tasks available</div>;
+      return <div>no tasks available</div>;
     }
 
     return (
       <Fragment>
         {updateAppTitle('Tasks')}
-        <div>{logoutButton}</div>
         <div>
           <TextField
             placeholder="Search"
