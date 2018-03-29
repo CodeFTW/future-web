@@ -15,8 +15,16 @@ input AddTaskInput {
   dueDate: DateTime
 }
 
+input EditProfileInput {
+  _id: ID
+  name: String!
+  email: String
+}
+
+
 type Mutation {
   addTask(task: AddTaskInput!): Task
+  editProfile(user: EditProfileInput!): User
   flipTask(_id: ID!): Task
   removeTask(_id: ID!): Task
   removeCheckedTasks: Task

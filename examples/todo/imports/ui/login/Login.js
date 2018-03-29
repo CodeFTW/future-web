@@ -54,6 +54,7 @@ export class Login extends React.Component {
       {
         email: this.state.emailSubscribe,
         password: this.state.passwordSubscribe,
+        profile: { name: '' },
       },
       error => {
         if (error) {
