@@ -17,7 +17,7 @@ Object.assign(tasksCollection, {
   flip(_id) {
     const task = this.findOne(_id);
     this.update({ _id }, { $set: { done: !task.done } });
-    return this.findOne(_id);
+    return task;
   },
   removeChecked() {
     const tasks = this.find({ done: true });
