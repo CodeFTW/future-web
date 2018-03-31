@@ -32,6 +32,10 @@ export const resolvers = {
     async removeCheckedTasks() {
       TasksCollection.removeChecked();
     },
+    async editProfile(root, { user }, { userId }) {
+      Users.update(user._id, { $set: { ...user } });
+      return Users.findOne(userId);
+    },
   },
   DateTime: resolverDateTime,
 };
