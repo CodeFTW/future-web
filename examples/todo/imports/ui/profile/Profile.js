@@ -7,25 +7,17 @@ import { updateAppTitle } from '../components/uis';
 export class Profile extends React.Component {
   // eslint-disable-next-line no-undef
   state = {
-    name: '',
-    email: '',
+    firstName: this.props.loggedUser.firstName,
+    lastName: this.props.loggedUser.lastName,
+    age: this.props.loggedUser.age,
   };
-
-  componentWillReceiveProps(nextProps) {
-    const { loggedUser } = nextProps;
-    this.setState({
-      _id: loggedUser._id,
-      name: loggedUser.name,
-      email: loggedUser.email,
-    });
-  }
 
   // eslint-disable-next-line no-undef
   onInputChange = ({ target: { name, value } }) =>
     this.setState({ [name]: value });
 
   // eslint-disable-next-line no-undef
-  handleSubmitProfile = () => !!this.state.name.trim();
+  handleSubmitProfile = () => !!this.state.firstName.trim();
 
   // eslint-disable-next-line no-undef
   editProfileAndGo = () => {
@@ -35,9 +27,7 @@ export class Profile extends React.Component {
       editProfile({
         variables: {
           user: {
-            _id: this.state._id,
-            name: this.state.name,
-            email: this.state.email,
+            ...this.state,
           },
         },
       })
@@ -60,23 +50,37 @@ export class Profile extends React.Component {
   render() {
     return (
       <Fragment>
-        {updateAppTitle(`Edit Profile ${this.state.name}`)}
+        {updateAppTitle(`Edit Profile ${this.state.firstName}`)}
         <form className="form">
           <TextField
-            name="email"
             label="Email"
-            value={this.state.email}
-            onChange={this.onInputChange}
+            value={this.props.loggedUser.email}
             fullWidth
             disabled
           />
           <TextField
-            name="name"
-            label="Name"
-            value={this.state.name}
+            name="firstName"
+            label="First Name"
+            value={this.state.firstName}
             onChange={this.onInputChange}
             fullWidth
             required
+          />
+          <TextField
+            name="lastName"
+            label="Last Name"
+            value={this.state.lastName}
+            onChange={this.onInputChange}
+            fullWidth
+            required
+          />
+          <TextField
+            name="age"
+            type="number"
+            label="Age"
+            value={this.state.age}
+            onChange={this.onInputChange}
+            fullWidth
           />
 
           <Button

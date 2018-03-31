@@ -16,9 +16,9 @@ input AddTaskInput {
 }
 
 input EditProfileInput {
-  _id: ID
-  name: String!
-  email: String
+  firstName: String!
+  lastName: String
+  age: Int
 }
 
 
@@ -41,6 +41,8 @@ type Task {
 type User {
   _id: ID!
   email: String!
-  name: String
+  firstName: String
+  lastName: String
+  age: Int
 }
 `;

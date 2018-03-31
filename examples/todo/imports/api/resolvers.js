@@ -33,8 +33,7 @@ export const resolvers = {
       TasksCollection.removeChecked();
     },
     async editProfile(root, { user }, { userId }) {
-      Users.update(user._id, { $set: { ...user } });
-      return Users.findOne(userId);
+      Users.update(userId, { $set: { ...user } });
     },
   },
   DateTime: resolverDateTime,

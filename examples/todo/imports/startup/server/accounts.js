@@ -20,7 +20,9 @@ Meteor.startup(function() {
 Accounts.onCreateUser((options, originalUser) => {
   const user = originalUser;
   if (options.profile) {
-    user.name = options.profile.name;
+    user.firstName = options.profile.firstName;
+    user.lastName = options.profile.lastName;
+    user.age = options.profile.age;
   }
   user.disabled = false;
 

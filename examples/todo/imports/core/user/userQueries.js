@@ -6,7 +6,9 @@ export const loggedUserQuery = graphql(gql`
     loggedUser {
       _id
       email
-      name
+      firstName
+      lastName
+      age
     }
   }
 `);

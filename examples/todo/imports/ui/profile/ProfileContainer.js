@@ -11,9 +11,7 @@ export const editProfileMutation = graphql(
   gql`
     mutation editProfile($user: EditProfileInput!) {
       editProfile(user: $user) {
-        _id
-        name
-        email
+        firstName
       }
     }
   `,
