@@ -58,7 +58,7 @@ export class AddTask extends React.Component {
           // TODO when we have the cache working correctly after an update we can remove this
           // https://github.com/CodeFTW/meteor-react-latest/issues/34
           client.resetStore();
-          showAlert('Task added', this.props);
+          showAlert('Task added');
           history.push('/');
         })
         .catch(error => {
@@ -66,7 +66,7 @@ export class AddTask extends React.Component {
           console.log(error);
         });
     } else {
-      showAlert('The field Description is required', this.props);
+      showAlert('The field Description is required');
     }
   };
 

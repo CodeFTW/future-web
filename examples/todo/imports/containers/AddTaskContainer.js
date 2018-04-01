@@ -2,7 +2,6 @@ import { graphql, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { withAlert } from '@codeftw/future-web-ui-alert';
 
 import { AddTask } from '../ui/AddTask';
 
@@ -41,6 +40,5 @@ export const AddTaskContainer = compose(
   addTaskMutation,
   data,
   withRouter,
-  withApollo,
-  withAlert
+  withApollo
 )(AddTask);

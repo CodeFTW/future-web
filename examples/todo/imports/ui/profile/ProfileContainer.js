@@ -2,7 +2,6 @@ import { graphql, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
-import { withAlert } from '@codeftw/future-web-ui-alert';
 import { getLoggedUserContext } from '../../user/userContext';
 
 import { Profile } from './Profile';
@@ -26,6 +25,5 @@ export const ProfileContainer = compose(
   editProfileMutation,
   loggedUser,
   withRouter,
-  withApollo,
-  withAlert
+  withApollo
 )(Profile);

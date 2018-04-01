@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Provider } from 'react-redux';
-import { AlertProvider } from '@codeftw/future-web-ui-alert';
+import { AlertProvider, Alert } from '@codeftw/future-web-ui-alert';
 import { TunnelProvider } from 'react-tunnels';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
@@ -23,19 +23,22 @@ const client = new ApolloClient({
 
 Meteor.startup(() => {
   render(
-    <Provider store={store}>
-      <ApolloProvider client={client}>
-        <MuiThemeProvider theme={theme}>
-          <TunnelProvider>
-            <AlertProvider>
+    <Fragment>
+      <Provider store={store}>
+        <ApolloProvider client={client}>
+          <MuiThemeProvider theme={theme}>
+            <TunnelProvider>
               <BrowserRouter>
                 <AppContainer />
               </BrowserRouter>
-            </AlertProvider>
-          </TunnelProvider>
-        </MuiThemeProvider>
-      </ApolloProvider>
-    </Provider>,
+            </TunnelProvider>
+          </MuiThemeProvider>
+        </ApolloProvider>
+      </Provider>
+      <AlertProvider>
+        <Alert />
+      </AlertProvider>
+    </Fragment>,
     document.getElementById('app')
   );
 });

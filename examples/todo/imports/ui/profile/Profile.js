@@ -35,7 +35,7 @@ export class Profile extends React.Component {
           // TODO when we have the cache working correctly after an update we can remove this
           // https://github.com/CodeFTW/future-web/issues/34
           client.resetStore();
-          showAlert('Profile updated', this.props);
+          showAlert('Profile updated');
           history.push('/profile');
         })
         .catch(error => {
@@ -43,7 +43,7 @@ export class Profile extends React.Component {
           console.log(error);
         });
     } else {
-      showAlert('The field Name is required', this.props);
+      showAlert('The field Name is required');
     }
   };
 
