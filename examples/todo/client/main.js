@@ -1,4 +1,5 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import { AlertProvider } from '@codeftw/future-web-ui-alert';
 import { TunnelProvider } from 'react-tunnels';
 import { Meteor } from 'meteor/meteor';
@@ -10,6 +11,7 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { DDPLink } from 'meteor/swydo:ddp-apollo';
 import { AppContainer } from '../imports/containers/AppContainer';
+import { store } from '../imports/core/reduxCore/store';
 import '../imports/startup/client/';
 
 const theme = createMuiTheme();
@@ -21,17 +23,19 @@ const client = new ApolloClient({
 
 Meteor.startup(() => {
   render(
-    <ApolloProvider client={client}>
-      <MuiThemeProvider theme={theme}>
-        <TunnelProvider>
-          <AlertProvider>
-            <BrowserRouter>
-              <AppContainer />
-            </BrowserRouter>
-          </AlertProvider>
-        </TunnelProvider>
-      </MuiThemeProvider>
-    </ApolloProvider>,
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <MuiThemeProvider theme={theme}>
+          <TunnelProvider>
+            <AlertProvider>
+              <BrowserRouter>
+                <AppContainer />
+              </BrowserRouter>
+            </AlertProvider>
+          </TunnelProvider>
+        </MuiThemeProvider>
+      </ApolloProvider>
+    </Provider>,
     document.getElementById('app')
   );
 });

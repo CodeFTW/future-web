@@ -7,12 +7,12 @@ import { default as Person } from 'material-ui-icons/Person';
 import { default as ExitToApp } from 'material-ui-icons/ExitToApp';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 
-export const Menu = ({ open, onSelectMenu, client, history }) => (
-  <Drawer open={open} onClose={onSelectMenu}>
+export const Menu = ({ open, toggleMenu, client, history }) => (
+  <Drawer open={open} onClose={toggleMenu(true)}>
     <List className="menu-list">
       <div>
         <Link to="/profile" style={{ textDecoration: 'none' }}>
-          <ListItem button onClick={onSelectMenu}>
+          <ListItem button onClick={toggleMenu(true)}>
             <ListItemIcon>
               <Person />
             </ListItemIcon>
@@ -20,7 +20,7 @@ export const Menu = ({ open, onSelectMenu, client, history }) => (
           </ListItem>
         </Link>
         <Link to="/" style={{ textDecoration: 'none' }}>
-          <ListItem button onClick={onSelectMenu}>
+          <ListItem button onClick={toggleMenu(true)}>
             <ListItemIcon>
               <ListIcon />
             </ListItemIcon>
@@ -34,7 +34,7 @@ export const Menu = ({ open, onSelectMenu, client, history }) => (
         onClick={() =>
           Meteor.logout(() => {
             client.resetStore().then(() => history.push('/login'));
-            onSelectMenu();
+            toggleMenu(true);
           })
         }
       >
