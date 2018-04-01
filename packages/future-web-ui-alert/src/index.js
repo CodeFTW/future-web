@@ -34,9 +34,7 @@ const closer = ({ setMessage }) => () => {
     setMessage('');
 };
 
-export const withAlert = compose(
-    connect(mapStateToProps, mapDispatchToProps)
-);
+
 
 export const AlertProvider = (props) => {
     return (<Provider store={store}>{props.children}</Provider>);
@@ -44,7 +42,9 @@ export const AlertProvider = (props) => {
 
 export const showAlert = (message) => store.dispatch(setMessage(message));
 
-export const Alert = withAlert((props) => {
+export const Alert = compose(
+        connect(mapStateToProps, mapDispatchToProps)
+)((props) => {
   const { autoHideDuration = 3000, message } = props;
   const hasMessage = !!message;
 

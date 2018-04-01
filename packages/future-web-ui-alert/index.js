@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.Alert = exports.showAlert = exports.AlertProvider = exports.withAlert = undefined;
+exports.Alert = exports.showAlert = exports.AlertProvider = undefined;
 
 var _react = require('react');
 
@@ -58,8 +58,6 @@ var closer = function closer(_ref) {
     };
 };
 
-var withAlert = exports.withAlert = (0, _redux.compose)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps));
-
 var AlertProvider = exports.AlertProvider = function AlertProvider(props) {
     return _react2.default.createElement(
         _reactRedux.Provider,
@@ -72,7 +70,7 @@ var showAlert = exports.showAlert = function showAlert(message) {
     return store.dispatch(_setMessage(message));
 };
 
-var Alert = exports.Alert = withAlert(function (props) {
+var Alert = exports.Alert = (0, _redux.compose)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps))(function (props) {
     var _props$autoHideDurati = props.autoHideDuration,
         autoHideDuration = _props$autoHideDurati === undefined ? 3000 : _props$autoHideDurati,
         message = props.message;
