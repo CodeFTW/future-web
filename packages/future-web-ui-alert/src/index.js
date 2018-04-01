@@ -42,9 +42,8 @@ export const AlertProvider = (props) => {
 
 export const showAlert = (message) => store.dispatch(setMessage(message));
 
-export const Alert = compose(
-        connect(mapStateToProps, mapDispatchToProps)
-)((props) => {
+export const Alert = compose(connect(mapStateToProps, mapDispatchToProps))
+((props) => {
   const { autoHideDuration = 3000, message } = props;
   const hasMessage = !!message;
 
