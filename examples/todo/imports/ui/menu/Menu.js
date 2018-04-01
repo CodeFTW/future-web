@@ -34,7 +34,7 @@ export const Menu = ({ open, toggleMenu, client, history }) => (
         onClick={() =>
           Meteor.logout(() => {
             client.resetStore().then(() => history.push('/login'));
-            toggleMenu(true);
+            toggleMenu(true)();
           })
         }
       >
