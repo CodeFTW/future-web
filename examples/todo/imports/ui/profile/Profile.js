@@ -46,13 +46,10 @@ export const Profile = ({user, setUser, loggedUser, onInputChange}) => {
   user = {...loggedUser};
 
   const { email, firstName, lastName, age } = user; 
- 
   
   // console.log(loggedUser);
   console.log(user);
-
-  // user = { ...loggedUser} };
-
+ 
     return (
       <Fragment>
         {updateAppTitle(`Edit Profile `)}

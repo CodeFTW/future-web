@@ -21,15 +21,13 @@ export const editProfileMutation = graphql(
 
 const loggedUser = getLoggedUserContext();
 
-// {email : '', firstName: '', lastName: '', age: 0}
+const user = {email : '', firstName: '', lastName: '', age: 0};
+
 export const ProfileContainer = compose(
-  withState('user', 'setUser', loggedUser),
+  withState('user', 'setUser', user),
   withHandlers({
     // eslint-disable-next-line no-undef
-    onInputChange : props => {
-      console.log(props, props.user);
-      return ({target: { name, value }}) => props.setUser({ ...props.user, [name] : value })}
-
+    onInputChange : (props) => ({target: { name, value }}) => props.setUser({ ...props.user, [name] : value })
   }),
   
   editProfileMutation,
