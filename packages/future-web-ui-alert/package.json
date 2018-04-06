@@ -1,10 +1,11 @@
 {
   "name": "@codeftw/future-web-ui-alert",
-  "version": "1.0.2",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.3",
+  "description": "Library Component React UI Alert ",
+  "main": "lib/index.js",
   "scripts": {
-    "compile": "babel src/*.js --out-file index.js",
+    "clear": "rimraf lib",
+    "compile": "npm run clear && babel --out-dir lib src",
     "compile-watch": "npm run compile -- --watch",
     "prepare": "npm run compile"
   },
@@ -12,10 +13,19 @@
     "type": "git",
     "url": "git+https://github.com/CodeFTW/future-web/tree/master/packages/future-web-ui-alert"
   },
-  "author": "",
+  "files": [
+    "lib"
+  ],
+  "author": "CodeFTW (http://codeftw.com/)",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
+  },
+  "keywords": [
+    "js", "react", "ui","component"
+  ],
+  "bugs": {
+    "url": "https://github.com/CodeFTW/future-web/issues"
   },
   "dependencies": {
     "js-cookie": "^2.2.0"
@@ -33,6 +43,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "react-redux": "^5.0.7",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "rimraf": "^2.6.2"
   }
 }
