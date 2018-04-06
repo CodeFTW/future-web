@@ -1,6 +1,6 @@
 {
   "name": "@codeftw/future-web-ui-alert",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Library Component React UI Alert ",
   "main": "lib/index.js",
   "scripts": {
