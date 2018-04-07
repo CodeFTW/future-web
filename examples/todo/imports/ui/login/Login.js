@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Button, TextField, Paper } from 'material-ui';
 import { Meteor } from 'meteor/meteor';
@@ -19,6 +19,7 @@ export class Login extends React.Component {
     passwordLogin: '',
     emailSubscribe: '',
     passwordSubscribe: '',
+    gender: 'male',
   };
 
   // eslint-disable-next-line no-undef
@@ -77,41 +78,43 @@ export class Login extends React.Component {
     }
     return (
       <div className="content login">
-        <h2>Sing In</h2>
-        <Paper elevation={5} className="login-box">
-          <form onSubmit={this.onSubmitLoginWithEmail} className="form">
-            <TextField
-              name="emailLogin"
-              label="Login"
-              value={this.state.emailLogin}
-              onChange={this.handleInput}
-              type="email"
-              fullWidth
-            />
-            <TextField
-              name="passwordLogin"
-              label="Password"
-              value={this.state.passwordLogin}
-              onChange={this.handleInput}
-              type="password"
-              fullWidth
-            />
-            <Button
-              className="form-action"
-              raised
-              color="primary"
-              type="submit"
-            >
-              Login
-            </Button>
-          </form>
-        </Paper>
+        <Fragment>
+          <h2>Sing In</h2>
+          <Paper elevation={5} className="login-box">
+            <form onSubmit={this.onSubmitLoginWithEmail} className="form">
+              <TextField
+                name="emailLogin"
+                label="Login"
+                value={this.state.emailLogin}
+                onChange={this.handleInput}
+                type="email"
+                fullWidth
+              />
+              <TextField
+                name="passwordLogin"
+                label="Password"
+                value={this.state.passwordLogin}
+                onChange={this.handleInput}
+                type="password"
+                fullWidth
+              />
+              <Button
+                className="form-action"
+                raised
+                color="primary"
+                type="submit"
+              >
+                Login
+              </Button>
+            </form>
+          </Paper>
+        </Fragment>
         <h2>Create Account</h2>
         <Paper elevation={5} className="login-box">
           <form onSubmit={this.onSubmitSubscribeWithEmail} className="form">
             <TextField
               name="emailSubscribe"
-              label="Subscribe"
+              label="Email"
               value={this.state.emailSubscribe}
               onChange={this.handleInput}
               type="email"

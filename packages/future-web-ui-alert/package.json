@@ -22,7 +22,10 @@
     "access": "public"
   },
   "keywords": [
-    "js", "react", "ui","component"
+    "js",
+    "react",
+    "ui",
+    "component"
   ],
   "bugs": {
     "url": "https://github.com/CodeFTW/future-web/issues"

@@ -106,3 +106,7 @@ body {
   @include flex(column);
   justify-content: space-between;
 }
+
+.person-name-subscribe {
+  @include flex(row);
+}
