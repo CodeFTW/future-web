@@ -16,7 +16,9 @@ body {
   font-weight: 300;
   -webkit-text-size-adjust: 100%; //fix iOS first loading with bigger fonts
 }
-
+a {
+  color: black;
+}
 .text-center {
   text-align: center;
 }
@@ -109,4 +111,26 @@ body {
 
 .person-name-subscribe {
   @include flex(row);
+}
+
+.home-content {
+  @include flex(column);
+  align-items: center;
+
+}
+
+.home-buttons {
+  @include flex(row);
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.img-content {
+  @include flex(row);
+  justify-content: center;
+}
+
+.img-home {
+  width: 50%;
+  height: 50%;
 }
