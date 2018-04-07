@@ -1,12 +1,10 @@
+import { showAlert } from '@codeftw/future-web-ui-alert';
 import { graphql, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 import { withRouter } from 'react-router-dom';
 import { compose, withState, withHandlers } from 'recompose';
 import { getLoggedUserContext } from '../../user/userContext';
-// import { withAlert } from '@codeftw/future-web-ui-alert';
-
 import { Profile } from './Profile';
-
 
 export const editProfileMutation = graphql(
   gql`
@@ -21,39 +19,39 @@ export const editProfileMutation = graphql(
   }
 );
 
-
 const loggedUser = getLoggedUserContext();
 
-handleSubmitProfile = (editProfileState) => !!editProfileState.firstName.trim()
+const handleSubmitProfile = editProfileState =>
+  !!editProfileState.firstName.trim();
 
 export const ProfileContainer = compose(
   editProfileMutation,
   loggedUser,
   withRouter,
   withApollo,
-  // withAlert,
-  withState('editProfileState', 'setEditProfileState', props =>
-    intialState = {
-      _id: props.loggedUser._id,
-      email: props.loggedUser.email,
-      firstName: props.loggedUser.firstName || '',
-      lastName: props.loggedUser.lastName || '',
-      age: props.loggedUser.age || 0,
-    },
-  ),
+  withState('editProfileState', 'setEditProfileState', props => ({
+    _id: props.loggedUser._id,
+    email: props.loggedUser.email,
+    firstName: props.loggedUser.firstName || '',
+    lastName: props.loggedUser.lastName || '',
+    age: props.loggedUser.age || 0,
+    gender: props.loggedUser.gender || 'male',
+  })),
   withHandlers({
     // eslint-disable-next-line no-undef
-    onInputChange: (props) => ({ target: { name, value } }) =>
+    onInputChange: props => ({ target: { name, value } }) =>
       props.setEditProfileState({ ...props.editProfileState, [name]: value }),
 
-    editProfileAndGo: (props) => () => {
-      if (this.handleSubmitProfile(props.editProfileState)) {
+    editProfileAndGo: props => () => {
+      if (handleSubmitProfile(props.editProfileState)) {
         const { editProfile, history, client } = props;
         const { firstName, lastName, age } = props.editProfileState;
         editProfile({
           variables: {
             user: {
-              firstName, lastName, age
+              firstName,
+              lastName,
+              age,
             },
           },
         })
@@ -62,7 +60,7 @@ export const ProfileContainer = compose(
             // https://github.com/CodeFTW/future-web/issues/34
             client.resetStore();
             // TODO: I don't know how can I show the alert for user
-            console.log('Profile updated');
+            showAlert('Profile updated');
             history.push('/profile');
           })
           .catch(error => {
@@ -70,9 +68,9 @@ export const ProfileContainer = compose(
             console.log(error);
           });
       } else {
-         // TODO: I don't know how can I show the alert for user
-         console.log('Profile updated');
+        // TODO: I don't know how can I show the alert for user
+        showAlert('Profile updated');
       }
-    }
+    },
   })
 )(Profile);

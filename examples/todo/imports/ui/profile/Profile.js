@@ -1,62 +1,80 @@
 import React, { Fragment } from 'react';
-import { Button, TextField } from 'material-ui';
+import {
+  Button,
+  TextField,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from 'material-ui';
 import { Save } from 'material-ui-icons';
 import { updateAppTitle } from '../components/uis';
 
-  
+export const Profile = ({
+  editProfileState,
+  onInputChange,
+  editProfileAndGo,
+}) => {
+  const { email, firstName, lastName, age, gender } = editProfileState;
 
-export const Profile = ({editProfileState, onInputChange, editProfileAndGo}) => {
-
-   const { email, firstName, lastName, age } = editProfileState; 
-   
-    return (
-
-      <Fragment>
-        {updateAppTitle(`Edit Profile `)}
-        <form className="form">
+  return (
+    <Fragment>
+      {updateAppTitle('Edit Profile ')}
+      <form className="form">
+        <TextField
+          name="email"
+          label="Email"
+          value={email}
+          fullWidth
+          disabled
+        />
+        <div className="person-name-subscribe">
           <TextField
-            name="email"
-            label="Email"
-            value={email}
-            fullWidth
-            disabled
-          />
-          <TextField
+            style={{ padding: '5px' }}
+            type="text"
             name="firstName"
             label="First Name"
             value={firstName || ''}
             onChange={onInputChange}
-            fullWidth
             required
           />
           <TextField
+            style={{ padding: '5px' }}
             name="lastName"
             label="Last Name"
+            type="text"
             value={lastName || ''}
             onChange={onInputChange}
-            fullWidth
             required
           />
-          <TextField
-            name="age"
-            type="number"
-            label="Age"
-            value={age  || ''}
-            onChange={onInputChange}
-            fullWidth
-          />
+        </div>
+        <RadioGroup
+          aria-label="gender"
+          name="gender"
+          value={gender}
+          onChange={onInputChange}
+          row
+        >
+          <FormControlLabel value="female" control={<Radio />} label="Female" />
+          <FormControlLabel value="male" control={<Radio />} label="Male" />
+        </RadioGroup>
+        <TextField
+          name="age"
+          type="number"
+          label="Age"
+          value={age || ''}
+          onChange={onInputChange}
+          fullWidth
+        />
 
-          <Button
-            className="form-action"
-            raised
-            color="primary"
-            onClick={editProfileAndGo}
-          >
-            <Save />
-          </Button>
-        </form>
-      </Fragment>
-    );
-
-  }
-
+        <Button
+          className="form-action"
+          raised
+          color="primary"
+          onClick={editProfileAndGo}
+        >
+          <Save />
+        </Button>
+      </form>
+    </Fragment>
+  );
+};
