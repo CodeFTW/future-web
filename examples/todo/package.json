@@ -40,6 +40,7 @@
     "babel-plugin-module-resolver": "^3.0.0",
     "eslint-config-tecsinapse-js": "^1.0.6",
     "prettier-eslint": "^8.8.1",
+    "react-icons": "^2.2.7",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2"
   },
