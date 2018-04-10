@@ -8,6 +8,7 @@ import { DeleteForever } from 'material-ui-icons';
 import { Task } from './Task';
 import { getLoggedUserContext } from '../user/userContext';
 import { updateAppTitle } from './components/uis';
+import { Image } from './components/Image';
 
 class TasksComponent extends React.Component {
   // eslint-disable-next-line no-undef
@@ -31,21 +32,7 @@ class TasksComponent extends React.Component {
     }
 
     if (tasks.length === 0) {
-      return (
-       <div className="pai">
-        <div  className="img-content-no-task">
-          <div className="img-no-task">
-            <img className="img-home" src="img/beach.png"/>
-            <p className="nothing-todo">Nothing to do \o/</p>
-          </div>
-          <div > 
-            
-          </div>
-        </div>
-      </div>
-         
- 
-    );
+      return ( <Image pathImage="img/beach1.png" text="Nothing to do =)" /> );
     }
 
     return (
@@ -56,9 +43,6 @@ class TasksComponent extends React.Component {
           <InputLabel htmlFor="input-with-icon-adornment">Search</InputLabel>
           <Input
           id="input-with-icon-adornment"
-            // placeholder="Search"
-            // fullWidth
-            // name="search"
             onChange={this.onInputChange}
             value={this.state.search}
           

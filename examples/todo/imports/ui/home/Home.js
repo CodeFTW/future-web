@@ -8,7 +8,7 @@ export const Home = props => {
   return (
     <div className="home-content">
       <div className="img-content">
-        <img className="img-home" src="img/future_web.png" alt="Logo" />
+        <img className="img-home" src="img/future-web.png" alt="Logo" />
       </div>
       <div className="home-buttons">
         <Fragment>
@@ -17,7 +17,7 @@ export const Home = props => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Globe size={55} style={{ margin: '10px' }} />
+            <Globe size={65} style={{ margin: '10px' }} />
           </a>
 
           <a
@@ -25,19 +25,23 @@ export const Home = props => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GitHub size={50} style={{ margin: '10px' }} />
+            <GitHub size={56} style={{ margin: '10px' }} />
           </a>
         </Fragment>
         {!loggedUser && (
           <Button
             className="form-action"
             color="primary"
-            raised
+            fab
             onClick={() => history.push('login')}
+            style={{ margin: '10px' }}
           >
             Login
           </Button>
         )}
+      </div>
+      <div className="home-footer">
+        <p style={{ fontSize: '0.8em', color: 'grey' }}>Powered by CodeFTW</p>
       </div>
     </div>
   );
