@@ -4,10 +4,13 @@ import {
   TextField,
   FormControlLabel,
   Radio,
-  RadioGroup,
+  RadioGroup
 } from 'material-ui';
+import {InputAdornment } from 'material-ui/Input';
+import { DatePicker } from 'material-ui-pickers';
 import { Save } from 'material-ui-icons';
 import { updateAppTitle } from '../components/uis';
+
 
 export const Profile = ({
   editProfileState,
@@ -29,7 +32,7 @@ export const Profile = ({
         />
         <div className="person-name-subscribe">
           <TextField
-            style={{ padding: '5px' }}
+            style={{ padding: '5px', marginTop: '10px'}}
             type="text"
             name="firstName"
             label="First Name"
@@ -38,7 +41,7 @@ export const Profile = ({
             required
           />
           <TextField
-            style={{ padding: '5px' }}
+            style={{ padding: '5px', marginTop: '10px'}}
             name="lastName"
             label="Last Name"
             type="text"
@@ -47,24 +50,34 @@ export const Profile = ({
             required
           />
         </div>
-        <RadioGroup
-          aria-label="gender"
-          name="gender"
-          value={gender}
-          onChange={onInputChange}
-          row
-        >
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-          <FormControlLabel value="male" control={<Radio />} label="Male" />
-        </RadioGroup>
-        <TextField
-          name="age"
-          type="number"
-          label="Age"
-          value={age || ''}
-          onChange={onInputChange}
-          fullWidth
-        />
+        
+        <div className="profile-container-radio-date">
+          <div>
+            <InputAdornment className="profile-font-gender" position="start">Gender</InputAdornment>
+            <RadioGroup
+              aria-label="gender"
+              name="gender"
+              value={gender}
+              onChange={onInputChange}      
+              row
+              className="profile-radio-group"    
+            >
+              
+                <FormControlLabel  value="female" control={<Radio />} label="Female" />
+                <FormControlLabel  value="male" control={<Radio />} label="Male" />
+              
+            </RadioGroup>
+          </div>
+          
+          <DatePicker
+            label="Birthday"
+            name="birthday"
+            // value={birthday}
+            returnMoment={false}
+            onChange={onInputChange}
+            minDate={new Date()}
+          />
+       </div>
 
         <Button
           className="form-action"
