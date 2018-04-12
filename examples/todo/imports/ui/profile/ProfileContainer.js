@@ -1,12 +1,16 @@
-import { showAlert } from '@codeftw/future-web-ui-alert';
-import { graphql, withApollo } from 'react-apollo';
-import gql from 'graphql-tag';
-import { withRouter } from 'react-router-dom';
-import { compose, withState, withHandlers } from 'recompose';
-import { getLoggedUserContext } from '../../user/userContext';
-import { Profile } from './Profile';
 
-export const editProfileMutation = graphql(
+import { compose, withState, withHandlers } from 'recompose';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
+import { withForm} from '../../containers/withForm'
+import { Profile } from './Profile';
+import { showAlert } from '@codeftw/future-web-ui-alert';
+
+
+
+
+
+const editProfileMutation = () => graphql(
   gql`
     mutation editProfile($user: EditProfileInput!) {
       editProfile(user: $user) {
@@ -19,7 +23,6 @@ export const editProfileMutation = graphql(
   }
 );
 
-const loggedUser = getLoggedUserContext();
 
 const initEditProfileState = (props) => 
   ({
@@ -70,15 +73,11 @@ const editValues = props => ({ target: { name, value } }) => {
     props.setEditProfileState({ ...props.editProfileState, [name]: value })
 }
 
-export const ProfileContainer = compose(
-  editProfileMutation,
-  loggedUser,
-  withRouter,
-  withApollo,
-  withState('editProfileState', 'setEditProfileState', props => initEditProfileState(props)),
-  withHandlers({
-    // eslint-disable-next-line no-undef
-    onInputChange: props => editValues(props),
-    editProfileAndGo: props => () => actionSave(props)
-  })
-)(Profile);
+const wrapWithState = () => withState('editProfileState', 'setEditProfileState', props => initEditProfileState(props));
+const wrapWithHandlers = () =>  withHandlers({
+  // eslint-disable-next-line no-undef
+  onInputChange: props => editValues(props),
+  editProfileAndGo: props => () => actionSave(props)
+});
+
+export const ProfileContainer = compose(withForm(editProfileMutation(), wrapWithState(), wrapWithHandlers()))(Profile);
