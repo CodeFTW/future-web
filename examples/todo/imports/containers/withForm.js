@@ -8,6 +8,4 @@ import { getLoggedUserContext } from '../user/userContext';
 const loggedUser = getLoggedUserContext();
 
 
-export const withForm = (...args) => {
-    return compose(loggedUser, withApollo, withRouter, ...args)
-};
+export const withForm = (...additionalHocs) =>  compose(loggedUser, withApollo, withRouter, ...additionalHocs);

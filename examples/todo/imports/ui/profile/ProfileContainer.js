@@ -7,9 +7,6 @@ import { Profile } from './Profile';
 import { showAlert } from '@codeftw/future-web-ui-alert';
 
 
-
-
-
 const editProfileMutation = () => graphql(
   gql`
     mutation editProfile($user: EditProfileInput!) {
@@ -55,7 +52,6 @@ const actionSave = props => {
         // TODO when we have the cache working correctly after an update we can remove this
         // https://github.com/CodeFTW/future-web/issues/34
         client.resetStore();
-        // TODO: I don't know how can I show the alert for user
         showAlert('Profile updated');
         history.push('/profile');
       })
