@@ -113,24 +113,95 @@ a {
   @include flex(row);
 }
 
+/**
+
+Home Screen
+
+*/
+
+.img-home {
+  margin-top: 15%;
+  width: 70%;
+  height: 70%;
+}
+
 .home-content {
   @include flex(column);
   align-items: center;
-
 }
 
 .home-buttons {
   @include flex(row);
   justify-content: space-around;
   margin-top: 30px;
+  align-items: center
 }
+
+.home-footer {
+  margin-top: 100%;
+}
+
+
+/**
+
+ Image Component
+
+*/
+
+.img-container{
+  display: flex;
+  flex-grow: inherit;
+}
+
 
 .img-content {
-  @include flex(row);
+  @include flex(column);
   justify-content: center;
+  align-items: center;
 }
 
-.img-home {
-  width: 50%;
-  height: 50%;
+.img-content-no-task {
+  @include flex(column);
+  flex-direction: initial;
+  align-content: center;
+  align-items: center;
+
+}
+
+.img-no-task {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.img-image {
+  width: 30%;
+  height: 30%;
+}
+
+/*
+  Ajusting Profile
+*/
+
+.profile-container-radio-date {
+  @include flex(row);
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.profile-radio-group { 
+  @include flex(row);
+  flex-wrap: nowrap;
+}
+
+
+.profile-font-gender p {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 0.8rem;
+  font-weight: 0;
+  padding: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+ 
 }

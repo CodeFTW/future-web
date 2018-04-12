@@ -1,7 +1,7 @@
 import { graphql, compose, withApollo } from 'react-apollo';
 import gql from 'graphql-tag';
 
-import { Tasks } from '/imports/ui/Tasks';
+import { Tasks } from './Tasks';
 
 export const flipTaskMutation = graphql(
   gql`

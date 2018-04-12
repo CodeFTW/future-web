@@ -3,7 +3,7 @@ import { showAlert } from '@codeftw/future-web-ui-alert';
 import { Button, TextField } from 'material-ui';
 import { Save } from 'material-ui-icons';
 import { DatePicker } from 'material-ui-pickers';
-import { updateAppTitle } from './components/uis';
+import { updateAppTitle } from '../components/uis';
 
 export class AddTask extends React.Component {
   // eslint-disable-next-line no-undef

@@ -1,12 +1,11 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { TasksContainer } from '../containers/TasksContainer';
-import { AddTaskContainer } from '../containers/AddTaskContainer';
-
-import { LoginContainer } from './login/LoginContainer';
-import { loggedUserQuery } from '../core/user/userQueries';
-import { ProfileContainer } from './profile/ProfileContainer';
-import { HomeContainer } from './home/HomeContainer';
+import { TasksContainer } from '../taskList/TasksContainer';
+import { AddTaskContainer } from '../addTask/AddTaskContainer';
+import { LoginContainer } from '../login/LoginContainer';
+import { loggedUserQuery } from '../../core/user/userQueries';
+import { ProfileContainer } from '../profile/ProfileContainer';
+import { HomeContainer } from '../home/HomeContainer';
 
 const enhance = loggedUserQuery;
 const PrivateRoute = enhance(

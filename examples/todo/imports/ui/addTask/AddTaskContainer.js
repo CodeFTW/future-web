@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 
-import { AddTask } from '../ui/AddTask';
+import { AddTask } from './AddTask';
 
 export const addTaskMutation = graphql(
   gql`

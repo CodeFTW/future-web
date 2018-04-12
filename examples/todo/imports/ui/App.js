@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Reboot from 'material-ui/Reboot';
 import { Alert } from '@codeftw/future-web-ui-alert';
 import { MenuContainer } from './menu/MenuContainer';
-import { Routes } from './Routes';
+import { Routes } from './routes/Routes';
 import { NavigationBarContainer } from './navigation/NavigationBarContainer';
 import { ToolbarComponent } from './menu/toolbar/ToolbarComponent';
 

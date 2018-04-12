@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { DDPLink } from 'meteor/swydo:ddp-apollo';
-import { AppContainer } from '../imports/containers/AppContainer';
+import { AppContainer } from '../imports/ui/AppContainer';
 import { store } from '../imports/core/reduxCore/store';
 import '../imports/startup/client/';
 
