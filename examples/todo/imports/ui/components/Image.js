@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Image = ({pathImage, text}) => (
+export const Image = ({pathImage, text}) => (
     <div className="img-container">
       <div className="img-content-no-task">
         <div className="img-no-task">
@@ -13,8 +14,6 @@ const Image = ({pathImage, text}) => (
     </div>
   );
 
-  Image.propType = {
-    pathImage: React.PropTypes.string.isRequired 
+  Image.propTypes = {
+    pathImage: PropTypes.string.isRequired 
   }
-
-  export const Image;
