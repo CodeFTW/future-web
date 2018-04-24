@@ -101,7 +101,8 @@ export class AddTask extends React.Component {
             value={this.state.dueDate}
             returnMoment={false}
             onChange={this.handleDueDateChange}
-            minDate={new Date()}
+            disablePast
+            keyboard
           />
           <Button
             className="form-action"
