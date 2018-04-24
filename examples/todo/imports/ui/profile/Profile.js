@@ -4,7 +4,7 @@ import {
   TextField,
   FormControlLabel,
   Radio,
-  RadioGroup
+  RadioGroup,
 } from 'material-ui';
 import {InputAdornment } from 'material-ui/Input';
 import { DatePicker } from 'material-ui-pickers';
@@ -72,16 +72,18 @@ export const Profile = ({
           <DatePicker
             label="Birthday"
             name="birthday"
-            // value={birthday}
-            returnMoment={false}
+            //value={birthday}
+            mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])}
+            format="DD/MM/YYYY"
+            keyboard
+            disableFuture
             onChange={onInputChange}
-            minDate={new Date()}
           />
        </div>
 
         <Button
           className="form-action"
-          raised
+          variant="raised"
           color="primary"
           onClick={editProfileAndGo}
         >
