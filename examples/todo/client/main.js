@@ -12,6 +12,9 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { DDPLink } from 'meteor/swydo:ddp-apollo';
 import { AppContainer } from '../imports/ui/AppContainer';
 import { store } from '../imports/core/reduxCore/store';
+import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
+import MomentUtils from 'material-ui-pickers/utils/moment-utils';
+
 import '../imports/startup/client/';
 
 const theme = createMuiTheme();
@@ -27,11 +30,13 @@ Meteor.startup(() => {
       <Provider store={store}>
         <ApolloProvider client={client}>
           <MuiThemeProvider theme={theme}>
+          <MuiPickersUtilsProvider utils={MomentUtils}>
             <TunnelProvider>
               <BrowserRouter>
                 <AppContainer />
               </BrowserRouter>
             </TunnelProvider>
+            </MuiPickersUtilsProvider>
           </MuiThemeProvider>
         </ApolloProvider>
       </Provider>

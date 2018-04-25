@@ -32,7 +32,7 @@ export const Home = props => {
           <Button
             className="form-action"
             color="primary"
-            fab
+            variant="flat"
             onClick={() => history.push('login')}
             style={{ margin: '10px' }}
           >

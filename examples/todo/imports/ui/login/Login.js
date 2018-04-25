@@ -100,7 +100,7 @@ export class Login extends React.Component {
               />
               <Button
                 className="form-action"
-                raised
+                variant="raised"
                 color="primary"
                 type="submit"
               >
@@ -130,7 +130,7 @@ export class Login extends React.Component {
             />
             <Button
               className="form-action"
-              raised
+              variant="raised"
               color="primary"
               type="submit"
             >
@@ -140,7 +140,7 @@ export class Login extends React.Component {
         </Paper>
         <Button
           className="form-action"
-          raised
+          variant="raised"
           color="primary"
           onClick={() => loginFacebook()}
           fullWidth

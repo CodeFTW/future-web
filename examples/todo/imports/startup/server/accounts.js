@@ -2,20 +2,20 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { Users } from '../../collections/UsersCollection';
 
-Meteor.startup(function() {
-  Accounts.loginServiceConfiguration.upsert(
-    {
-      service: 'facebook',
-    },
-    {
-      $set: {
-        appId: Meteor.settings.public.FACEBOOK_APP_ID,
+// Meteor.startup(function() {
+//   Accounts.loginServiceConfiguration.upsert(
+//     {
+//       service: 'facebook',
+//     },
+//     {
+//       $set: {
+//         appId: Meteor.settings.public.FACEBOOK_APP_ID,
 
-        secret: Meteor.settings.FACEBOOK_SECRET_KEY,
-      },
-    }
-  );
-});
+//         secret: Meteor.settings.FACEBOOK_SECRET_KEY,
+//       },
+//     }
+//   );
+// });
 
 Accounts.onCreateUser((options, originalUser) => {
   const user = originalUser;

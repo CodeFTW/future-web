@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import Reboot from 'material-ui/Reboot';
+import CssBaseline from 'material-ui/CssBaseline';
 import { Alert } from '@codeftw/future-web-ui-alert';
 import { MenuContainer } from './menu/MenuContainer';
 import { Routes } from './routes/Routes';
@@ -11,7 +11,7 @@ export const App = props => (
     <Alert />
     {props.data.loggedUser && (
       <Fragment>
-        <Reboot />
+        <CssBaseline />
         <ToolbarComponent />
         <MenuContainer />
       </Fragment>

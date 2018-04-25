@@ -99,13 +99,15 @@ export class AddTask extends React.Component {
           />
           <DatePicker
             value={this.state.dueDate}
-            returnMoment={false}
             onChange={this.handleDueDateChange}
-            minDate={new Date()}
+            mask={value => (value ? [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/] : [])}
+            format="DD/MM/YYYY"
+            keyboard
+            disablePast
           />
           <Button
             className="form-action"
-            raised
+            variant="raised"
             color="primary"
             onClick={this.addTaskAndGo}
           >
