@@ -33,7 +33,14 @@ export class AddTask extends React.Component {
 
   // eslint-disable-next-line no-undef
   handleDueDateChange = dueDate => {
+   
+   try {
+     this.setState({ dueDate: dueDate._d.getTime() });
+    
+   } catch (error) {
     this.setState({ dueDate });
+   }
+   
   };
 
   // eslint-disable-next-line no-undef
@@ -43,6 +50,8 @@ export class AddTask extends React.Component {
   addTaskAndGo = () => {
     if (this.handleSubmitTaks()) {
       const { addTask, history, client } = this.props;
+
+      console.log(this.state.dueDate);
       addTask({
         variables: {
           task: {
