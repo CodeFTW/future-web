@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { showAlert } from '@codeftw/future-web-ui-alert';
-import { Button, TextField } from 'material-ui';
-import { Save } from 'material-ui-icons';
+import { Button, TextField } from '@material-ui/core';
+import { Save } from '@material-ui/icons';
 import { DatePicker } from 'material-ui-pickers';
 import { updateAppTitle } from '../components/uis';
 
@@ -51,7 +51,6 @@ export class AddTask extends React.Component {
     if (this.handleSubmitTaks()) {
       const { addTask, history, client } = this.props;
 
-      console.log(this.state.dueDate);
       addTask({
         variables: {
           task: {
@@ -116,7 +115,7 @@ export class AddTask extends React.Component {
           />
           <Button
             className="form-action"
-            variant="raised"
+            variant="contained"
             color="primary"
             onClick={this.addTaskAndGo}
           >

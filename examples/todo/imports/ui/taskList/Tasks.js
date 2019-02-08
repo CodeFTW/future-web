@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
 import { compose } from 'recompose';
 import { withRouter } from 'react-router-dom';
-import { List, Button, TextField } from 'material-ui';
-import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
-import { FormControl } from 'material-ui/Form';
-import { DeleteForever } from 'material-ui-icons';
+import { List, Button,  Input, InputLabel, FormControl } from '@material-ui/core';
+import { DeleteForever } from '@material-ui/icons';
 import { Task } from './Task';
 import { getLoggedUserContext } from '../../user/userContext';
 import { updateAppTitle } from './../components/uis';

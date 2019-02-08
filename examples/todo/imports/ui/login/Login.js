@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
-import { Button, TextField, Paper } from 'material-ui';
+import { Button, TextField, Paper } from '@material-ui/core';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { showAlert } from '@codeftw/future-web-ui-alert';
@@ -100,7 +100,7 @@ export class Login extends React.Component {
               />
               <Button
                 className="form-action"
-                variant="raised"
+                variant="contained"
                 color="primary"
                 type="submit"
               >
@@ -130,7 +130,7 @@ export class Login extends React.Component {
             />
             <Button
               className="form-action"
-              variant="raised"
+              variant="contained"
               color="primary"
               type="submit"
             >
@@ -140,7 +140,7 @@ export class Login extends React.Component {
         </Paper>
         <Button
           className="form-action"
-          variant="raised"
+          variant="contained"
           color="primary"
           onClick={() => loginFacebook()}
           fullWidth
