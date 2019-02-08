@@ -1,4 +1,4 @@
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import { NavigationBar } from './NavigationBar';

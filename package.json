@@ -3,5 +3,6 @@
 		"lerna": "^2.8.0",
 		"react-redux": "^5.0.7",
 		"redux": "^3.7.2"
-	}
+	},
+	"license": "MIT"
 }

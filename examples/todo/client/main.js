@@ -5,19 +5,23 @@ import { TunnelProvider } from 'react-tunnels';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { DDPLink } from 'meteor/swydo:ddp-apollo';
 import { AppContainer } from '../imports/ui/AppContainer';
 import { store } from '../imports/core/reduxCore/store';
-import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider';
-import MomentUtils from 'material-ui-pickers/utils/moment-utils';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
+import MomentUtils from '@date-io/moment';
 
 import '../imports/startup/client/';
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+});
 
 const client = new ApolloClient({
   link: new DDPLink(),

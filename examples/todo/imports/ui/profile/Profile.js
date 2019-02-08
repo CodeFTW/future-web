@@ -5,10 +5,10 @@ import {
   FormControlLabel,
   Radio,
   RadioGroup,
-} from 'material-ui';
-import {InputAdornment } from 'material-ui/Input';
+    InputAdornment
+} from '@material-ui/core';
 import { DatePicker } from 'material-ui-pickers';
-import { Save } from 'material-ui-icons';
+import { Save } from '@material-ui/icons';
 import { updateAppTitle } from '../components/uis';
 
 
@@ -17,7 +17,7 @@ export const Profile = ({
   onInputChange,
   editProfileAndGo,
 }) => {
-  const { email, firstName, lastName, age, gender } = editProfileState;
+  const { email, firstName, lastName, gender } = editProfileState;
 
   return (
     <Fragment>
@@ -83,7 +83,7 @@ export const Profile = ({
 
         <Button
           className="form-action"
-          variant="raised"
+          variant="contained"
           color="primary"
           onClick={editProfileAndGo}
         >

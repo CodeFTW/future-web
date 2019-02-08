@@ -1,5 +1,5 @@
 import React from 'react';
-import NotInterested from 'material-ui-icons/NotInterested';
+import { NotInterested} from '@material-ui/icons';
 
 export const ConnectionStatus = ({ offline }) => {
   if (offline) {

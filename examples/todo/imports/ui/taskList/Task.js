@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { ListItem, ListItemText, Checkbox, Paper } from 'material-ui';
-import { DeleteForever } from 'material-ui-icons';
-import { indigo } from 'material-ui/colors/index';
+import { ListItem, ListItemText, Checkbox, Paper } from '@material-ui/core';
+import { DeleteForever } from '@material-ui/icons';
+import { indigo } from '@material-ui/core/colors/index';
 import { compose } from 'recompose';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -53,7 +53,6 @@ export const Task = enhance(props => {
     <Paper className={`task-priority-${handleDays(item.dueDate)}`}>
       <ListItem>
         <Checkbox
-          defaultChecked={item.done}
           checked={item.done}
           onChange={handleChange(props)}
         />

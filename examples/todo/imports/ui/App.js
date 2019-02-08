@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import CssBaseline from 'material-ui/CssBaseline';
+import {CssBaseline}  from '@material-ui/core';
 import { Alert } from '@codeftw/future-web-ui-alert';
 import { MenuContainer } from './menu/MenuContainer';
 import { Routes } from './routes/Routes';
