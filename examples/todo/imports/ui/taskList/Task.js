@@ -53,7 +53,6 @@ export const Task = enhance(props => {
     <Paper className={`task-priority-${handleDays(item.dueDate)}`}>
       <ListItem>
         <Checkbox
-          defaultChecked={item.done}
           checked={item.done}
           onChange={handleChange(props)}
         />

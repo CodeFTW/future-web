@@ -1,8 +1,7 @@
 import React from 'react';
 import {BottomNavigation, BottomNavigationAction, Paper} from '@material-ui/core';
-import {default as ViewList} from '@material-ui/icons';
-import {default as Add} from '@material-ui/icons';
-
+import {default as ViewList} from '@material-ui/icons/ViewList';
+import {default as Add} from '@material-ui/icons/Add';
 import {Link} from 'react-router-dom';
 
 const handleEffectClick = ({pathname}) =>
