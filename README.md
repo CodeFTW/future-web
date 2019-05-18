@@ -35,7 +35,7 @@ Follow these steps:
 - Mention any maintainer, @filipenevola, for instance
 - Agree with the maintainer on the solution
 - Fork the repo
-- Let crystal clear that you will start to work on that
+- Be crystal clear that you will start to work on that
   - it is important to avoid two people doing the same thing at the same time
 - Start a Pull Request
   - watch how to do it in the first 15 minutes of this [video](https://www.youtube.com/watch?v=TNoGHLZaTRg&t=4343s)
@@ -53,7 +53,7 @@ Follow these steps:
 - [material.io Color Pallet](https://material.io/guidelines/style/color.html)
 - [Material Community Icons](https://materialdesignicons.com/)
 - [Flexbox Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
-- [What We Can Do - PWA](https://whatwebcando.today/)
+- [What Web Can Do](https://whatwebcando.today/) - browser capabilities
 - [React Router API](https://reacttraining.com/react-router/web/api/BrowserRouter)
 - [Apollo React Docs](https://www.apollographql.com/docs/react/)
 - [Recompose API](https://github.com/acdlite/recompose/blob/master/docs/API.md)
